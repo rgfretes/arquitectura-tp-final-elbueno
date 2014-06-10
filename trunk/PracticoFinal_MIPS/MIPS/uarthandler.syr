@@ -1,0 +1,1041 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.63 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.63 secs
+ 
+--> Reading design: uarthandler.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "uarthandler.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "uarthandler"
+Output Format                      : NGC
+Target Device                      : xc6slx16-3-csg324
+
+---- Source Options
+Top Module Name                    : uarthandler
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+Cores Search Directories           : {"ipcore_dir"  }
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\signExtension.v" into library work
+Parsing module <signExtension>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\RegisterBank.v" into library work
+Parsing module <RegisterBank>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\pc.v" into library work
+Parsing module <pc>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\mux.v" into library work
+Parsing module <mux>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\ipcore_dir\rammemory.v" into library work
+Parsing module <rammemory>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\ipcore_dir\pmem.v" into library work
+Parsing module <pmem>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\GetRegAddr.v" into library work
+Parsing module <GetRegAddr>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\ControlModule.v" into library work
+Parsing module <ControlModule>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\branch_control.v" into library work
+Parsing module <branch_control>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\alu_control.v" into library work
+Parsing module <alu_control>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\alu.v" into library work
+Parsing module <alu>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\adder_32b.v" into library work
+Parsing module <adder_32b>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\wb.v" into library work
+Parsing module <wb>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uart_tx.v" into library work
+Parsing module <uart_tx>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uart_rx.v" into library work
+Parsing module <uart_rx>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\StallHandler.v" into library work
+Parsing module <StallHandler>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\stage_if.v" into library work
+Parsing module <stage_if>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\stage_id.v" into library work
+Parsing module <stage_id>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\stage_exe.v" into library work
+Parsing module <stage_exe>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\mod_m_counter.v" into library work
+Parsing module <mod_m_counter>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\mem.v" into library work
+Parsing module <mem>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\forwarding_mem.v" into library work
+Parsing module <forwarding_mem>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\forwarding_exe.v" into library work
+Parsing module <forwarding_exe>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\fifo.v" into library work
+Parsing module <fifo>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uart.v" into library work
+Parsing module <uart>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\debuger_decodificator.v" into library work
+Parsing module <debuger_decoder>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\debugersm.v" into library work
+Parsing module <debugersm>.
+Analyzing Verilog file "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uarthandler.v" into library work
+Parsing module <uarthandler>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <uarthandler>.
+WARNING:HDLCompiler:872 - "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uarthandler.v" Line 27: Using initial value of resetuart since it is never assigned
+
+Elaborating module <uart>.
+
+Elaborating module <fifo>.
+
+Elaborating module <mod_m_counter(M=326,N=9)>.
+
+Elaborating module <uart_rx(DBIT=8,SB_TICK=16)>.
+
+Elaborating module <uart_tx(DBIT=8,SB_TICK=16)>.
+
+Elaborating module <debuger_decoder>.
+
+Elaborating module <StallHandler>.
+
+Elaborating module <forwarding_exe>.
+
+Elaborating module <forwarding_mem>.
+
+Elaborating module <stage_if>.
+
+Elaborating module <pc>.
+
+Elaborating module <pmem>.
+WARNING:HDLCompiler:1499 - "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\ipcore_dir\pmem.v" Line 39: Empty module <pmem> remains a black box.
+WARNING:HDLCompiler:189 - "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\stage_if.v" Line 64: Size mismatch in connection of port <addra>. Formal port size is 11-bit while actual signal size is 32-bit.
+
+Elaborating module <branch_control>.
+
+Elaborating module <stage_id>.
+
+Elaborating module <ControlModule>.
+
+Elaborating module <RegisterBank>.
+
+Elaborating module <signExtension>.
+
+Elaborating module <GetRegAddr>.
+
+Elaborating module <stage_exe>.
+
+Elaborating module <adder_32b>.
+
+Elaborating module <alu>.
+
+Elaborating module <alu_control>.
+
+Elaborating module <mem>.
+
+Elaborating module <rammemory>.
+WARNING:HDLCompiler:1499 - "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\ipcore_dir\rammemory.v" Line 39: Empty module <rammemory> remains a black box.
+WARNING:HDLCompiler:189 - "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\mem.v" Line 57: Size mismatch in connection of port <addra>. Formal port size is 13-bit while actual signal size is 32-bit.
+
+Elaborating module <wb>.
+
+Elaborating module <mux>.
+
+Elaborating module <debugersm>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <uarthandler>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uarthandler.v".
+INFO:Xst:3210 - "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uarthandler.v" line 34: Output port <wr_full> of the instance <uartt> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <uarthandler> synthesized.
+
+Synthesizing Unit <uart>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uart.v".
+        DBIT = 8
+        SB_TICK = 16
+        DVSR = 326
+        DVSR_BIT = 9
+INFO:Xst:3210 - "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uart.v" line 20: Output port <full> of the instance <buffarini> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uart.v" line 43: Output port <q> of the instance <baud_gen_unit> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <uart> synthesized.
+
+Synthesizing Unit <fifo>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\fifo.v".
+        B = 8
+        W = 4
+    Found 16x8-bit dual-port RAM <Mram_array_reg> for signal <array_reg>.
+    Found 1-bit register for signal <empty_reg>.
+    Found 4-bit register for signal <r_ptr_reg>.
+    Found 4-bit register for signal <w_ptr_reg>.
+    Found 1-bit register for signal <full_reg>.
+    Found 4-bit adder for signal <w_ptr_succ> created at line 47.
+    Found 4-bit adder for signal <r_ptr_succ> created at line 48.
+    Found 4-bit comparator not equal for signal <r_ptr_reg[3]_w_ptr_reg[3]_equal_8_o> created at line 62
+    Found 4-bit comparator not equal for signal <w_ptr_reg[3]_r_ptr_reg[3]_equal_10_o> created at line 72
+    Summary:
+	inferred   1 RAM(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  10 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+Unit <fifo> synthesized.
+
+Synthesizing Unit <mod_m_counter>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\mod_m_counter.v".
+        N = 9
+        M = 326
+    Found 9-bit register for signal <r_reg>.
+    Found 9-bit adder for signal <r_reg[8]_GND_5_o_add_2_OUT> created at line 18.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   9 D-type flip-flop(s).
+Unit <mod_m_counter> synthesized.
+
+Synthesizing Unit <uart_rx>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uart_rx.v".
+        DBIT = 8
+        SB_TICK = 16
+    Found 4-bit register for signal <s_reg>.
+    Found 3-bit register for signal <n_reg>.
+    Found 8-bit register for signal <b_reg>.
+    Found 2-bit register for signal <state_reg>.
+    Found 3-bit adder for signal <n_reg[2]_GND_6_o_add_16_OUT> created at line 83.
+    Found 4-bit adder for signal <s_reg[3]_GND_6_o_add_29_OUT> created at line 98.
+    Found 2-bit 4-to-1 multiplexer for signal <state_next> created at line 54.
+    Found 4-bit 4-to-1 multiplexer for signal <s_next> created at line 54.
+    HDL ADVISOR - Describing an operational reset or an explicit power-up state for register <state_reg> would allow inference of a finite state machine and as consequence better performance and smaller area.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  17 D-type flip-flop(s).
+	inferred  20 Multiplexer(s).
+Unit <uart_rx> synthesized.
+
+Synthesizing Unit <uart_tx>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\uart_tx.v".
+        DBIT = 8
+        SB_TICK = 16
+    Found 4-bit register for signal <s_reg>.
+    Found 3-bit register for signal <n_reg>.
+    Found 8-bit register for signal <b_reg>.
+    Found 2-bit register for signal <state_reg>.
+    Found 1-bit register for signal <tx_reg>.
+    Found 3-bit adder for signal <n_reg[2]_GND_7_o_add_17_OUT> created at line 99.
+    Found 4-bit adder for signal <s_reg[3]_GND_7_o_add_30_OUT> created at line 117.
+    Found 4x1-bit Read Only RAM for signal <busy>
+    Found 2-bit 4-to-1 multiplexer for signal <state_next> created at line 58.
+    Found 4-bit 4-to-1 multiplexer for signal <s_next> created at line 58.
+    HDL ADVISOR - Describing an operational reset or an explicit power-up state for register <state_reg> would allow inference of a finite state machine and as consequence better performance and smaller area.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  18 D-type flip-flop(s).
+	inferred  17 Multiplexer(s).
+Unit <uart_tx> synthesized.
+
+Synthesizing Unit <debuger_decoder>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\debuger_decodificator.v".
+INFO:Xst:3210 - "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\debuger_decodificator.v" line 124: Output port <memRead> of the instance <ins_decoder> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <debuger_decoder> synthesized.
+
+Synthesizing Unit <StallHandler>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\StallHandler.v".
+    Found 1-bit register for signal <counter>.
+    Found 1-bit register for signal <stall>.
+    Found 5-bit comparator equal for signal <regAddrOutAlu[4]_regAddrInRs[4]_equal_3_o> created at line 47
+    Found 5-bit comparator equal for signal <regAddrOutAlu[4]_regAddrParam[4]_equal_4_o> created at line 47
+    Summary:
+	inferred   2 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred   4 Multiplexer(s).
+Unit <StallHandler> synthesized.
+
+Synthesizing Unit <forwarding_exe>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\forwarding_exe.v".
+    Found 5-bit comparator equal for signal <outReg_exe[4]_rs_id[4]_equal_2_o> created at line 50
+    Found 5-bit comparator equal for signal <outReg_mem[4]_rs_id[4]_equal_3_o> created at line 52
+    Found 5-bit comparator equal for signal <outReg_exe[4]_rd_id[4]_equal_6_o> created at line 58
+    Found 5-bit comparator equal for signal <outReg_mem[4]_rd_id[4]_equal_7_o> created at line 60
+    Summary:
+	inferred   4 Comparator(s).
+	inferred   3 Multiplexer(s).
+Unit <forwarding_exe> synthesized.
+
+Synthesizing Unit <forwarding_mem>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\forwarding_mem.v".
+    Found 5-bit comparator equal for signal <outReg_mem[4]_rt_id[4]_equal_1_o> created at line 36
+    Summary:
+	inferred   1 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <forwarding_mem> synthesized.
+
+Synthesizing Unit <stage_if>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\stage_if.v".
+    Found 1-bit register for signal <nop>.
+    Found 32-bit register for signal <iadd>.
+    Summary:
+	inferred  33 D-type flip-flop(s).
+Unit <stage_if> synthesized.
+
+Synthesizing Unit <pc>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\pc.v".
+    Found 32-bit register for signal <pc>.
+    Found 32-bit subtractor for signal <pc[31]_GND_14_o_sub_3_OUT> created at line 38.
+    Found 32-bit adder for signal <pc[31]_GND_14_o_add_3_OUT> created at line 42.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  32 D-type flip-flop(s).
+	inferred   4 Multiplexer(s).
+Unit <pc> synthesized.
+
+Synthesizing Unit <branch_control>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\branch_control.v".
+    Summary:
+	inferred   2 Multiplexer(s).
+Unit <branch_control> synthesized.
+
+Synthesizing Unit <stage_id>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\stage_id.v".
+    Found 32-bit register for signal <extendedInstr>.
+    Found 2-bit register for signal <wbi>.
+    Found 1-bit register for signal <memWrite>.
+    Found 1-bit register for signal <aluSrc>.
+    Found 1-bit register for signal <regDst>.
+    Found 5-bit register for signal <regAddr1>.
+    Found 5-bit register for signal <regAddr2>.
+    Found 5-bit register for signal <rs>.
+    Found 32-bit register for signal <pc_ex>.
+    Found 1-bit register for signal <isJump>.
+    Found 1-bit register for signal <isNotConditional>.
+    Found 1-bit register for signal <isEq>.
+    Found 1-bit register for signal <memRead>.
+    Found 1-bit register for signal <nop>.
+    Found 4-bit register for signal <aluOp>.
+    Summary:
+	inferred  93 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <stage_id> synthesized.
+
+Synthesizing Unit <ControlModule>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\ControlModule.v".
+    Summary:
+	inferred   3 Multiplexer(s).
+Unit <ControlModule> synthesized.
+
+Synthesizing Unit <RegisterBank>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\RegisterBank.v".
+    Found 32-bit register for signal <registro2>.
+    Found 1024-bit register for signal <n0052[1023:0]>.
+    Found 32-bit register for signal <registro1>.
+    Found 32-bit 32-to-1 multiplexer for signal <addr1[4]_data[31][31]_wide_mux_3_OUT> created at line 51.
+    Found 32-bit 32-to-1 multiplexer for signal <addr2[4]_data[31][31]_wide_mux_4_OUT> created at line 52.
+    Summary:
+	inferred 1088 D-type flip-flop(s).
+	inferred  34 Multiplexer(s).
+Unit <RegisterBank> synthesized.
+
+Synthesizing Unit <signExtension>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\signExtension.v".
+    Summary:
+	no macro.
+Unit <signExtension> synthesized.
+
+Synthesizing Unit <GetRegAddr>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\GetRegAddr.v".
+WARNING:Xst:647 - Input <instr<10:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <instr<31:26>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	no macro.
+Unit <GetRegAddr> synthesized.
+
+Synthesizing Unit <stage_exe>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\stage_exe.v".
+    Found 32-bit register for signal <jump_address>.
+    Found 1-bit register for signal <is_jump_o>.
+    Found 1-bit register for signal <branch_eq_o>.
+    Found 1-bit register for signal <branch_inc_o>.
+    Found 1-bit register for signal <zero>.
+    Found 2-bit register for signal <wbi_o>.
+    Found 1-bit register for signal <M_o>.
+    Found 32-bit register for signal <data_b_o>.
+    Found 5-bit register for signal <regaddr_o>.
+    Found 5-bit register for signal <rt_id>.
+    Found 1-bit register for signal <nop>.
+    Found 32-bit register for signal <out>.
+    Found 32-bit 4-to-1 multiplexer for signal <a_processed_entry> created at line 69.
+    Found 32-bit 4-to-1 multiplexer for signal <b_processed_entry> created at line 69.
+    Summary:
+	inferred 114 D-type flip-flop(s).
+	inferred   4 Multiplexer(s).
+Unit <stage_exe> synthesized.
+
+Synthesizing Unit <adder_32b>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\adder_32b.v".
+    Found 32-bit adder for signal <c> created at line 29.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+Unit <adder_32b> synthesized.
+
+Synthesizing Unit <alu>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\alu.v".
+    Found 32-bit subtractor for signal <a[31]_b[31]_sub_3_OUT> created at line 35.
+    Found 32-bit adder for signal <a[31]_b[31]_add_1_OUT> created at line 34.
+    Found 32-bit shifter logical left for signal <b[31]_a[31]_shift_left_10_OUT> created at line 41
+    Found 32-bit shifter logical right for signal <b[31]_a[31]_shift_right_12_OUT> created at line 43
+    Found 32-bit 11-to-1 multiplexer for signal <out> created at line 33.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  11 Multiplexer(s).
+	inferred   2 Combinational logic shifter(s).
+Unit <alu> synthesized.
+
+Synthesizing Unit <alu_control>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\alu_control.v".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <alu_control> synthesized.
+
+Synthesizing Unit <mem>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\mem.v".
+    Found 32-bit register for signal <datafromimm>.
+    Found 5-bit register for signal <regaddrout>.
+    Found 1-bit register for signal <nop>.
+    Found 2-bit register for signal <wbo>.
+    Summary:
+	inferred  40 D-type flip-flop(s).
+	inferred   2 Multiplexer(s).
+Unit <mem> synthesized.
+
+Synthesizing Unit <wb>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\wb.v".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <wb> synthesized.
+
+Synthesizing Unit <mux>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\mux.v".
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <mux> synthesized.
+
+Synthesizing Unit <debugersm>.
+    Related source file is "C:\Users\aaquaran\Desktop\tito\Facu\Arquitectura de Computadoras\Tp Final\trunk-elbueno\PracticoFinal_MIPS\MIPS\debugersm.v".
+    Found 1-bit register for signal <rd_out>.
+    Found 1-bit register for signal <wr_out>.
+    Found 8-bit register for signal <w_data_out>.
+    Found 32-bit register for signal <n0042[31:0]>.
+    Found 3-bit register for signal <datasize>.
+    Found 8-bit register for signal <r_data_out>.
+    Found 2-bit register for signal <state_reg>.
+    Found 3-bit subtractor for signal <n0047[2:0]> created at line 125.
+    Found 3-bit adder for signal <n0056> created at line 105.
+    Found 8-bit 4-to-1 multiplexer for signal <w_data_next> created at line 125.
+    Found 2-bit 4-to-1 multiplexer for signal <state_next> created at line 89.
+    HDL ADVISOR - Describing an operational reset or an explicit power-up state for register <state_reg> would allow inference of a finite state machine and as consequence better performance and smaller area.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  55 D-type flip-flop(s).
+	inferred   6 Multiplexer(s).
+Unit <debugersm> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 3
+ 16x8-bit dual-port RAM                                : 2
+ 4x1-bit single-port Read Only RAM                     : 1
+# Adders/Subtractors                                   : 14
+ 3-bit adder                                           : 3
+ 3-bit subtractor                                      : 1
+ 32-bit adder                                          : 1
+ 32-bit addsub                                         : 2
+ 4-bit adder                                           : 6
+ 9-bit adder                                           : 1
+# Registers                                            : 64
+ 1-bit register                                        : 25
+ 1024-bit register                                     : 1
+ 2-bit register                                        : 6
+ 3-bit register                                        : 3
+ 32-bit register                                       : 11
+ 4-bit register                                        : 7
+ 5-bit register                                        : 6
+ 8-bit register                                        : 4
+ 9-bit register                                        : 1
+# Comparators                                          : 11
+ 4-bit comparator not equal                            : 4
+ 5-bit comparator equal                                : 7
+# Multiplexers                                         : 115
+ 1-bit 2-to-1 multiplexer                              : 10
+ 2-bit 2-to-1 multiplexer                              : 20
+ 2-bit 4-to-1 multiplexer                              : 3
+ 3-bit 2-to-1 multiplexer                              : 4
+ 32-bit 2-to-1 multiplexer                             : 50
+ 32-bit 32-to-1 multiplexer                            : 2
+ 32-bit 4-to-1 multiplexer                             : 2
+ 4-bit 2-to-1 multiplexer                              : 17
+ 4-bit 4-to-1 multiplexer                              : 2
+ 5-bit 2-to-1 multiplexer                              : 3
+ 8-bit 2-to-1 multiplexer                              : 1
+ 8-bit 4-to-1 multiplexer                              : 1
+# Logic shifters                                       : 2
+ 32-bit shifter logical left                           : 1
+ 32-bit shifter logical right                          : 1
+# Xors                                                 : 2
+ 1-bit xor2                                            : 1
+ 32-bit xor2                                           : 1
+
+=========================================================================
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Reading core <ipcore_dir/pmem.ngc>.
+Reading core <ipcore_dir/rammemory.ngc>.
+Loading core <pmem> for timing and area information for instance <pmemory>.
+Loading core <rammemory> for timing and area information for instance <memory>.
+
+Synthesizing (advanced) Unit <fifo>.
+The following registers are absorbed into counter <r_ptr_reg>: 1 register on signal <r_ptr_reg>.
+The following registers are absorbed into counter <w_ptr_reg>: 1 register on signal <w_ptr_reg>.
+INFO:Xst:3231 - The small RAM <Mram_array_reg> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 8-bit                     |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <wr_en>         | high     |
+    |     addrA          | connected to signal <w_ptr_reg>     |          |
+    |     diA            | connected to signal <w_data>        |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 16-word x 8-bit                     |          |
+    |     addrB          | connected to signal <r_ptr_reg>     |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <fifo> synthesized (advanced).
+
+Synthesizing (advanced) Unit <mod_m_counter>.
+The following registers are absorbed into counter <r_reg>: 1 register on signal <r_reg>.
+Unit <mod_m_counter> synthesized (advanced).
+
+Synthesizing (advanced) Unit <uart_rx>.
+The following registers are absorbed into counter <n_reg>: 1 register on signal <n_reg>.
+Unit <uart_rx> synthesized (advanced).
+
+Synthesizing (advanced) Unit <uart_tx>.
+The following registers are absorbed into counter <n_reg>: 1 register on signal <n_reg>.
+INFO:Xst:3231 - The small RAM <Mram_busy> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 1-bit                      |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <state_reg>     |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <busy>          |          |
+    -----------------------------------------------------------------------
+Unit <uart_tx> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 3
+ 16x8-bit dual-port distributed RAM                    : 2
+ 4x1-bit single-port distributed Read Only RAM         : 1
+# Adders/Subtractors                                   : 11
+ 3-bit adder                                           : 1
+ 3-bit subtractor                                      : 1
+ 32-bit adder                                          : 1
+ 32-bit addsub                                         : 2
+ 4-bit adder                                           : 6
+# Counters                                             : 7
+ 3-bit up counter                                      : 2
+ 4-bit up counter                                      : 4
+ 9-bit up counter                                      : 1
+# Registers                                            : 1490
+ Flip-Flops                                            : 1490
+# Comparators                                          : 11
+ 4-bit comparator not equal                            : 4
+ 5-bit comparator equal                                : 7
+# Multiplexers                                         : 110
+ 1-bit 2-to-1 multiplexer                              : 7
+ 2-bit 2-to-1 multiplexer                              : 20
+ 2-bit 4-to-1 multiplexer                              : 3
+ 3-bit 2-to-1 multiplexer                              : 2
+ 32-bit 2-to-1 multiplexer                             : 50
+ 32-bit 32-to-1 multiplexer                            : 2
+ 32-bit 4-to-1 multiplexer                             : 2
+ 4-bit 2-to-1 multiplexer                              : 17
+ 4-bit 4-to-1 multiplexer                              : 2
+ 5-bit 2-to-1 multiplexer                              : 3
+ 8-bit 2-to-1 multiplexer                              : 1
+ 8-bit 4-to-1 multiplexer                              : 1
+# Logic shifters                                       : 2
+ 32-bit shifter logical left                           : 1
+ 32-bit shifter logical right                          : 1
+# Xors                                                 : 2
+ 1-bit xor2                                            : 1
+ 32-bit xor2                                           : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <extendedInstr_12> in Unit <stage_id> is equivalent to the following FF/Latch, which will be removed : <regAddr1_1> 
+INFO:Xst:2261 - The FF/Latch <extendedInstr_14> in Unit <stage_id> is equivalent to the following FF/Latch, which will be removed : <regAddr1_3> 
+INFO:Xst:2261 - The FF/Latch <extendedInstr_11> in Unit <stage_id> is equivalent to the following FF/Latch, which will be removed : <regAddr1_0> 
+INFO:Xst:2261 - The FF/Latch <extendedInstr_15> in Unit <stage_id> is equivalent to the following 17 FFs/Latches, which will be removed : <extendedInstr_16> <extendedInstr_17> <extendedInstr_18> <extendedInstr_19> <extendedInstr_20> <extendedInstr_21> <extendedInstr_22> <extendedInstr_23> <extendedInstr_24> <extendedInstr_25> <extendedInstr_26> <extendedInstr_27> <extendedInstr_28> <extendedInstr_29> <extendedInstr_30> <extendedInstr_31> <regAddr1_4> 
+INFO:Xst:2261 - The FF/Latch <extendedInstr_13> in Unit <stage_id> is equivalent to the following FF/Latch, which will be removed : <regAddr1_2> 
+
+Optimizing unit <uarthandler> ...
+
+Optimizing unit <fifo> ...
+
+Optimizing unit <uart_rx> ...
+
+Optimizing unit <uart_tx> ...
+
+Optimizing unit <debugersm> ...
+
+Optimizing unit <debuger_decoder> ...
+
+Optimizing unit <StallHandler> ...
+
+Optimizing unit <stage_if> ...
+
+Optimizing unit <pc> ...
+
+Optimizing unit <stage_id> ...
+
+Optimizing unit <RegisterBank> ...
+
+Optimizing unit <stage_exe> ...
+
+Optimizing unit <alu> ...
+
+Optimizing unit <mem> ...
+
+Optimizing unit <forwarding_exe> ...
+WARNING:Xst:2677 - Node <decoder/ins_decoder/memRead> of sequential type is unconnected in block <uarthandler>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block uarthandler, actual ratio is 39.
+FlipFlop decoder/exe/regaddr_o_2 has been replicated 1 time(s)
+FlipFlop decoder/ins_decoder/extendedInstr_15 has been replicated 1 time(s)
+FlipFlop decoder/ins_decoder/regDst has been replicated 1 time(s)
+FlipFlop decoder/ins_decoder/rs_2 has been replicated 1 time(s)
+FlipFlop decoder/stage_mem/regaddrout_0 has been replicated 1 time(s)
+FlipFlop decoder/stage_mem/regaddrout_1 has been replicated 1 time(s)
+FlipFlop decoder/stage_mem/regaddrout_2 has been replicated 1 time(s)
+FlipFlop decoder/stage_mem/regaddrout_3 has been replicated 1 time(s)
+FlipFlop decoder/stage_mem/regaddrout_4 has been replicated 1 time(s)
+FlipFlop decoder/stage_mem/wbo_0 has been replicated 2 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 1510
+ Flip-Flops                                            : 1510
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : uarthandler.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 3516
+#      GND                         : 5
+#      INV                         : 8
+#      LUT1                        : 8
+#      LUT2                        : 96
+#      LUT3                        : 95
+#      LUT4                        : 139
+#      LUT5                        : 1332
+#      LUT6                        : 1482
+#      MUXCY                       : 101
+#      MUXF7                       : 141
+#      VCC                         : 4
+#      XORCY                       : 105
+# FlipFlops/Latches                : 1512
+#      FD                          : 101
+#      FDE                         : 159
+#      FDR                         : 123
+#      FDR_1                       : 34
+#      FDRE                        : 68
+#      FDRE_1                      : 1024
+#      FDS                         : 1
+#      FDSE                        : 2
+# RAMS                             : 25
+#      RAM16X1D                    : 4
+#      RAM32M                      : 2
+#      RAMB16BWER                  : 18
+#      RAMB8BWER                   : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 3
+#      IBUF                        : 2
+#      OBUF                        : 1
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            1512  out of  18224     8%  
+ Number of Slice LUTs:                 3176  out of   9112    34%  
+    Number used as Logic:              3160  out of   9112    34%  
+    Number used as Memory:               16  out of   2176     0%  
+       Number used as RAM:               16
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   3336
+   Number with an unused Flip Flop:    1824  out of   3336    54%  
+   Number with an unused LUT:           160  out of   3336     4%  
+   Number of fully used LUT-FF pairs:  1352  out of   3336    40%  
+   Number of unique control sets:        22
+
+IO Utilization: 
+ Number of IOs:                           4
+ Number of bonded IOBs:                   4  out of    232     1%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:               19  out of     32    59%  
+    Number using Block RAM only:         19
+ Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                                                               | Clock buffer(FF name)                                                                                                                                   | Load  |
+---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+clk                                                                        | BUFGP                                                                                                                                                   | 125   |
+decoder/_n0210(decoder/_n0210<5>2:O)                                       | BUFG(*)(decoder/staller/stall)                                                                                                                          | 1408  |
+decoder/instr_fetch/processed_clock(decoder/instr_fetch/processed_clock1:O)| NONE(*)(decoder/instr_fetch/pmemory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)| 4     |
+decoder/instr_fetch/pmemory/N1                                             | NONE(decoder/instr_fetch/pmemory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)   | 4     |
+decoder/stage_mem/memory/N1                                                | NONE(decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)      | 15    |
+---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+(*) These 2 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 11.970ns (Maximum Frequency: 83.544MHz)
+   Minimum input arrival time before clock: 6.228ns
+   Maximum output required time after clock: 3.597ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 7.746ns (frequency: 129.097MHz)
+  Total number of paths / destination ports: 3438 / 278
+-------------------------------------------------------------------------
+Delay:               7.746ns (Levels of Logic = 5)
+  Source:            state_machine/r_data_out_0 (FF)
+  Destination:       state_machine/datatosend_0_0 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: state_machine/r_data_out_0 to state_machine/datatosend_0_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             97   0.447   2.105  state_machine/r_data_out_0 (state_machine/r_data_out_0)
+     LUT6:I2->O           29   0.203   1.614  decoder/_n0079<5>1 (decoder/_n0079)
+     LUT6:I0->O            1   0.203   0.808  decoder/_n0443<0>2 (decoder/_n0443<0>1)
+     LUT6:I3->O            1   0.205   0.827  decoder/_n0443<0>5 (decoder/_n0443<0>7)
+     LUT6:I2->O            1   0.203   0.827  decoder/_n0443<0>10 (decoder/_n0443<0>14)
+     LUT6:I2->O            1   0.203   0.000  decoder/_n0443<0>25 (result<0>)
+     FDE:D                     0.102          state_machine/datatosend_0_0
+    ----------------------------------------
+    Total                      7.746ns (1.566ns logic, 6.180ns route)
+                                       (20.2% logic, 79.8% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'decoder/_n0210'
+  Clock period: 11.970ns (frequency: 83.544MHz)
+  Total number of paths / destination ports: 1153727 / 3056
+-------------------------------------------------------------------------
+Delay:               11.970ns (Levels of Logic = 10)
+  Source:            decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram (RAM)
+  Destination:       decoder/exe/zero (FF)
+  Source Clock:      decoder/_n0210 rising
+  Destination Clock: decoder/_n0210 rising
+
+  Data Path: decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram to decoder/exe/zero
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB16BWER:CLKA->DOA6    1   1.850   0.827  ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram (ramloop[8].ram.ram_douta<6>)
+     LUT6:I2->O           40   0.203   1.406  has_mux_a.A/Mmux_dout_mux131 (DOUTA<20>)
+     end scope: 'decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr:DOUTA<20>'
+     end scope: 'decoder/stage_mem/memory:douta<20>'
+     LUT6:I5->O            4   0.205   1.048  decoder/exe/Mmux_a_processed_entry131 (decoder/exe/a_processed_entry<20>)
+     LUT6:I0->O           18   0.203   1.297  decoder/exe/arith_log_unit/out3 (decoder/exe/arith_log_unit/out2)
+     LUT6:I2->O            9   0.203   0.829  decoder/exe/arith_log_unit/Mmux_out10333 (decoder/exe/arith_log_unit/Mmux_out10242)
+     MUXF7:S->O            1   0.148   0.827  decoder/exe/arith_log_unit/Mmux_out10245_SW1 (N492)
+     LUT6:I2->O            2   0.203   0.845  decoder/exe/arith_log_unit/Mmux_out10248 (decoder/exe/t_out<16>)
+     LUT6:I3->O            1   0.205   0.580  decoder/exe/arith_log_unit/zero6_SW0_SW0 (N921)
+     LUT6:I5->O            1   0.205   0.580  decoder/exe/arith_log_unit/zero5_SW0 (N306)
+     LUT6:I5->O            1   0.205   0.000  decoder/exe/arith_log_unit/zero7 (decoder/exe/t_zero)
+     FDR:D                     0.102          decoder/exe/zero
+    ----------------------------------------
+    Total                     11.970ns (3.732ns logic, 8.238ns route)
+                                       (31.2% logic, 68.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 6 / 6
+-------------------------------------------------------------------------
+Offset:              3.401ns (Levels of Logic = 3)
+  Source:            rx (PAD)
+  Destination:       uartt/uart_rx_unit/state_reg_0 (FF)
+  Destination Clock: clk rising
+
+  Data Path: rx to uartt/uart_rx_unit/state_reg_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   1.222   0.745  rx_IBUF (rx_IBUF)
+     LUT5:I4->O            1   0.205   0.924  uartt/uart_rx_unit/Mmux_state_next1_SW0 (N19)
+     LUT5:I0->O            1   0.203   0.000  uartt/uart_rx_unit/Mmux_state_next1 (uartt/uart_rx_unit/state_next<0>)
+     FD:D                      0.102          uartt/uart_rx_unit/state_reg_0
+    ----------------------------------------
+    Total                      3.401ns (1.732ns logic, 1.669ns route)
+                                       (50.9% logic, 49.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'decoder/_n0210'
+  Total number of paths / destination ports: 1267 / 1267
+-------------------------------------------------------------------------
+Offset:              6.228ns (Levels of Logic = 2)
+  Source:            reset (PAD)
+  Destination:       decoder/exe/out_31 (FF)
+  Destination Clock: decoder/_n0210 rising
+
+  Data Path: reset to decoder/exe/out_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O          1081   1.222   2.455  reset_IBUF (reset_IBUF)
+     LUT3:I0->O          115   0.205   1.916  decoder/exe/reset_stall_OR_236_o1 (decoder/exe/reset_stall_OR_236_o)
+     FDR:R                     0.430          decoder/exe/rt_id_0
+    ----------------------------------------
+    Total                      6.228ns (1.857ns logic, 4.371ns route)
+                                       (29.8% logic, 70.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              3.597ns (Levels of Logic = 1)
+  Source:            uartt/uart_tx_unit/tx_reg (FF)
+  Destination:       tx (PAD)
+  Source Clock:      clk rising
+
+  Data Path: uartt/uart_tx_unit/tx_reg to tx
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.447   0.579  uartt/uart_tx_unit/tx_reg (uartt/uart_tx_unit/tx_reg)
+     OBUF:I->O                 2.571          tx_OBUF (tx)
+    ----------------------------------------
+    Total                      3.597ns (3.018ns logic, 0.579ns route)
+                                       (83.9% logic, 16.1% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+-----------------------------------+---------+---------+---------+---------+
+                                   | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                       |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+-----------------------------------+---------+---------+---------+---------+
+clk                                |    7.746|         |         |         |
+decoder/_n0210                     |    7.522|         |         |         |
+decoder/instr_fetch/processed_clock|    6.046|         |         |         |
+-----------------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock decoder/_n0210
+-----------------------------------+---------+---------+---------+---------+
+                                   | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                       |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+-----------------------------------+---------+---------+---------+---------+
+decoder/_n0210                     |   11.970|    4.665|    4.786|         |
+decoder/instr_fetch/processed_clock|    5.756|         |         |         |
+-----------------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock decoder/instr_fetch/processed_clock
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+decoder/_n0210 |         |    1.570|         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 212.00 secs
+Total CPU time to Xst completion: 211.93 secs
+ 
+--> 
+
+Total memory usage is 361964 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    8 (   0 filtered)
+Number of infos    :   13 (   0 filtered)
+
