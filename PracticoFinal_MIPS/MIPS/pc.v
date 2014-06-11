@@ -34,12 +34,15 @@ module pc(
 	begin
 		if (reset)
 			pc = 32'b0;
-		else if(stall)
-			pc = pc - 1;
 		else
 		begin
 			if(control_use_npc)
-				pc = pc + 1;
+			begin
+				if(stall)
+					pc = pc;
+				else
+					pc = pc + 1;
+			end
 			else
 				pc = data_jump_address;
 		end
