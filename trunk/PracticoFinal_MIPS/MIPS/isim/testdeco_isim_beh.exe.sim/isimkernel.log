@@ -2,9 +2,9 @@ Command line:
    testdeco_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  57711
+     -socket  50652
 
-Tue Jun 10 18:52:41 2014
+Tue Jun 10 21:36:16 2014
 
 
- Elaboration Time: 0.218402 sec
+ Elaboration Time: 0.0624 sec
