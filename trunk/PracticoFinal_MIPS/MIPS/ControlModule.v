@@ -26,7 +26,8 @@ module ControlModule(
 	 output reg			isEq, //
     output reg 		memWrite, //
     output reg	[1:0] wbi,
-    output reg			memRead, // 
+    output reg			memRead,//
+	 output reg [1:0] datasize,
     output reg			aluSrc, //
     output reg			regDst
     );
@@ -61,18 +62,24 @@ always@(instr)
 	isEq = ~instr[0];
 	
 /********    MEMWrite *********/
-
 	if(instr[5:3] == 5)
+	begin
 		memWrite = 1;
-	else
-		memWrite = 0;
-		
-/********    MEMRead *********/		
-	if(instr[5:3] == 4)
-		memRead = 1;
-	else
 		memRead = 0;
-		
+		datasize = instr[1:0];
+	end
+	else if(instr[5:3] == 4)
+		begin
+			memRead = 1;
+			memWrite = 0;
+			datasize = instr[1:0];
+		end
+	else 
+		begin
+			memWrite = 0;
+			memRead = 0;
+			datasize = 2'b11;
+		end
 /********    MEMtoReg  ********/
 
 

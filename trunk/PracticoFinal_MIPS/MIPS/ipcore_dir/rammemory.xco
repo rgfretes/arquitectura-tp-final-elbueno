@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.1
-# Date: Wed May 21 00:30:54 2014
+# Date: Sat Jun 14 00:26:30 2014
 #
 ##############################################################
 #
@@ -45,7 +45,7 @@ CSET assume_synchronous_clk=false
 CSET axi_id_width=4
 CSET axi_slave_type=Memory_Slave
 CSET axi_type=AXI4_Full
-CSET byte_size=9
+CSET byte_size=8
 CSET coe_file=no_coe_file_loaded
 CSET collision_warnings=ALL
 CSET component_name=rammemory
@@ -89,7 +89,7 @@ CSET reset_priority_b=CE
 CSET reset_type=SYNC
 CSET softecc=false
 CSET use_axi_id=false
-CSET use_byte_write_enable=false
+CSET use_byte_write_enable=true
 CSET use_error_injection_pins=false
 CSET use_regcea_pin=false
 CSET use_regceb_pin=false
@@ -103,4 +103,4 @@ CSET write_width_b=32
 MISC pkg_timestamp=2012-03-28T15:19:06Z
 # END Extra information
 GENERATE
-# CRC: 98a428f5
+# CRC: 852c6db0

@@ -50,11 +50,13 @@ module stage_exe(
 	 //Signals for stage_mem
 	 input [1:0] wbi,
 	 input M,
+	 input [1:0] memdatasize,
 	 input [4:0] regaddr1,
 	 input [4:0] regaddr2,
 	 output reg [4:0] rt_id,
 	 output reg [1:0] wbi_o,
     output reg M_o,
+	 output reg [1:0] memdatasize_o,
 	 output reg [4:0] regaddr_o,
 	 output reg [31:0] data_b_o,
     output reg [31:0] out,
@@ -121,6 +123,7 @@ module stage_exe(
 			zero = 1'b0;
 			wbi_o = 2'b0;
 			M_o = 1'b0;
+			memdatasize_o = 2'b0;
 			data_b_o = 32'b0;
 			regaddr_o = 0;
 			rt_id = 0;
@@ -136,6 +139,7 @@ module stage_exe(
 			branch_inc_o = control_branch_inc;
 			wbi_o = wbi;
 			M_o = M;
+			memdatasize_o = memdatasize;
 			data_b_o = b_processed_entry;
 			if(control_Reg_DST)
 				regaddr_o = regaddr1; //1
