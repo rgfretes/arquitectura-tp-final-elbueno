@@ -43,17 +43,19 @@ wire [4:0] regaddr1, regaddr2;
 
 wire [1:0] wb_exe;
 wire M_exe;
+wire [1:0] memdatasize_exe;
 wire [4:0] rs;
 
 /*MEM*/
 wire M;
+wire [1:0] memdatasize;
 wire [31:0] data, dataaddr;
 wire [1:0] wb_mem;
 wire [4:0] regaddr_mem;
 wire [4:0] rt_id;
 
 /*WB*/
-wire [31:0] datafrommem, datafromimm;
+wire [31:0] datafrommem, datafromimm, datamask;
 wire [1:0] wb;
 
 /*Forwarding*/
@@ -137,7 +139,8 @@ stage_id ins_decoder (
     .isJump(control_is_jump), 
     .isNotConditional(control_branch_inc), 
     .isEq(control_branch_eq), 
-    .memWrite(M_exe), 
+    .memWrite(M_exe),
+	 .memdatasize(memdatasize_exe),
     .wbi(wb_exe), 
     .memRead(), 
     .aluSrc(control_use_b), 
@@ -173,11 +176,13 @@ stage_exe exe(
     .zero(control_is_zero_if), 
     .jump_address(data_jump_address), 
     .wbi(wb_exe), 
-    .M(M_exe), 
+    .M(M_exe),
+    .memdatasize(memdatasize_exe),	 
     .regaddr1(regaddr1), 
     .regaddr2(regaddr2),
     .wbi_o(wb_mem), 
-    .M_o(M), 
+    .M_o(M),
+	 .memdatasize_o(memdatasize),
     .regaddr_o(regaddr_mem), 
     .data_b_o(data), 
     .out(dataaddr),
@@ -196,7 +201,8 @@ mem stage_mem (
     .wbi(wb_mem), 
     .regaddr(regaddr_mem), 
     .wbo(wb), 
-    .M(M), 
+    .M(M),
+	 .memdatasize(memdatasize),
     .data(data), 
     .dataaddr(dataaddr), 
     .datafrommem(datafrommem), 
@@ -205,6 +211,7 @@ mem stage_mem (
 	 .forw(forw_mem),
 	 .result_from_mem(writeData),
 	 .reset(reset),
+	 .datamask(datamask),
 	 .nop(nop_mem)
     );
 	 
@@ -212,7 +219,8 @@ wb write_back (
 	 .nop_mem(nop_mem),
     .datafrommem(datafrommem), 
     .datafromimm(datafromimm), 
-    .wb(wb), 
+    .wb(wb),
+	 .datamask(datamask),
     .datatoregfile(writeData), 
     .weregfile(regWrite)
     );

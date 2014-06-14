@@ -47,6 +47,7 @@ module stage_id(
 	output reg [4:0] 	regAddr2,
 	output reg [4:0] 	rs,
 	output reg 			regDst,
+	output reg [1:0]  memdatasize,
 	output reg 			nop
     );
 
@@ -65,6 +66,7 @@ wire [4:0] 	_regAddr1;
 wire [4:0] 	_regAddr2 ;
 wire 			_regDst;
 wire [4:0]  _rs;
+wire [1:0]  _memdatasize;
 
 
 ControlModule control (
@@ -77,7 +79,8 @@ ControlModule control (
     .wbi(_wbi), 
     .memRead(_memRead), 
     .aluSrc(_aluSrc), 
-    .regDst(_regDst)
+    .regDst(_regDst),
+	 .datasize(_memdatasize)
     );
 	 
 RegisterBank registerBank (
@@ -133,6 +136,7 @@ begin
 			isEq 					= 1'b0;
 			memRead 				= 1'b0;
 			nop 					= 1;
+			memdatasize			= 2'b0;
 	  end
 	else if(stall)
 		begin
@@ -151,6 +155,7 @@ begin
 			rs						= rs;
 			pc_ex 				= pc_ex;
 			nop 					= nop;
+			memdatasize			= memdatasize;
 		end
 	else
 		begin
@@ -169,6 +174,7 @@ begin
 			rs						= _rs;
 			pc_ex 				= pc_id;
 			nop 					= nop_if;
+			memdatasize			= _memdatasize;
 		end
 
 end	
