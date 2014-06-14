@@ -34,6 +34,8 @@ wire [31:0] data_jump_address;
 wire [31:0] instr, writeData, pc_id;
 wire [4:0] 	writeAddr;
 wire 			regWrite;
+reg [4:0] addrAsync;
+wire [31:0] outputAsync;
 
 /*EX*/
 wire [31:0] data_a, data_b, data_imm, npc;
@@ -127,6 +129,7 @@ stage_id ins_decoder (
     .clock(clk),
 	 .reset(reset),
 	 .stall(stall),
+	 .addrAsync(addrAsync),
 	 .nop_if(nop_if),
     .instr(instr), 
 	 .isJumped(isJumped),
@@ -151,7 +154,8 @@ stage_id ins_decoder (
     .regAddr2(regaddr2),
 	 .rs(rs),
     .regDst(control_Reg_DST),
-	 .nop(nop_id)
+	 .nop(nop_id),
+	 .outputAsync(outputAsync)
     );
 
 
@@ -229,55 +233,390 @@ wb write_back (
 
 always @ (*)
 begin
-	case (code[5:0])
-		6'b111000: clk = 0;
-		6'b111111: clk = 1;
+	case (code[7:0])
+		8'b00111000: clk = 0;
+		8'b00111111: clk = 1;
 		default: clk = 0;
 	endcase
-	case (code[5:0])
+	case (code[7:0])
 		/*IF*/ 
-		6'b000001: result = 32'b0 + instr; //instruction
-		6'b100010: result = 32'b0 + pc_id; //iadd
+		8'b00000001: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + instr; //instruction
+		end
+		8'b00100010: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + pc_id; //iadd
+		end
 		/*ID*/
-		6'b000010: result = 32'b0 + control_oper; //aluOp
-		6'b000011: result = 32'b0 + control_is_jump; //isJump
-		6'b000100: result = 32'b0 + control_branch_inc; //isNotConditional
-		6'b000101: result = 32'b0 + control_branch_eq; //isEq
-		6'b000110: result = 32'b0 + M_exe; //memWrite
-		6'b000111: result = 32'b0 + wb_exe; //wbi
-		//6'b001000: result = //memRead
-		6'b001001: result = 32'b0 + control_use_b; //aluSrc
-		6'b001010: result = 32'b0 + data_a; //reg1
-		6'b001011: result = 32'b0 + data_b; //reg2
-		6'b001100: result = 32'b0 + data_imm; //extendedInstr
-		6'b001101: result = 32'b0 + regaddr1; //regAddr1
-		6'b001110: result = 32'b0 + regaddr2; //regAddr2
-		6'b001111: result = 32'b0 + control_Reg_DST; //regDst
+		8'b00000010:
+		begin		
+			size <= 2'b00;
+			result <= 32'b0 + control_oper; //aluOp
+		end
+		8'b00000011: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + control_is_jump; //isJump
+		end
+		8'b00000100: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + control_branch_inc; //isNotConditional
+		end
+		8'b00000101: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + control_branch_eq; //isEq
+		end
+		8'b00000110: 
+		begin
+			size <=  2'b00;
+			result <= 32'b0 + M_exe; //memWrite
+		end
+		8'b00000111: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + wb_exe; //wbi
+		end
+		//6'b001000: result <= //memRead
+		8'b00001001: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + control_use_b; //aluSrc
+		end
+		8'b00001010: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + data_a; //reg1
+		end
+		8'b00001011: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + data_b; //reg2
+		end
+		8'b00001100: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + data_imm; //extendedInstr
+		end
+		8'b00001101: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + regaddr1; //regAddr1
+		end
+		8'b00001110: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + regaddr2; //regAddr2
+		end
+		8'b00001111: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + control_Reg_DST; //regDst
+		end
 		/*EXE*/
-		6'b010000: result = 32'b0 + control_is_jump_if; //is_jump_o
-		6'b010001: result = 32'b0 + control_branch_eq_if; //branch_eq_o
-		6'b010010: result = 32'b0 + control_branch_inc_if; //branch_inc_o
-		6'b010011: result = 32'b0 + control_is_zero_if; //zero
-		6'b010100: result = 32'b0 + data_jump_address; //jump_address
-		6'b010101: result = 32'b0 + wb_mem; //wbi_o
-		6'b010110: result = 32'b0 + M; //M_o
-		6'b010111: result = 32'b0 + regaddr_mem; //regaddr_o
-		6'b011000: result = 32'b0 + data;//data_b_o
-		6'b011001: result = 32'b0 + dataaddr;//out
+		8'b00010000: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + control_is_jump_if; //is_jump_o
+		end
+		8'b00010001: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + control_branch_eq_if; //branch_eq_o
+		end
+		8'b00010010: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + control_branch_inc_if; //branch_inc_o
+		end
+		8'b00010011:
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + control_is_zero_if; //zero
+		end
+		8'b00010100: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + data_jump_address; //jump_address
+		end
+		8'b00010101: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + wb_mem; //wbi_o
+		end
+		8'b00010110: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + M; //M_o
+		end
+		8'b00010111: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + regaddr_mem; //regaddr_o
+		end
+		8'b00011000: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + data;//data_b_o
+		end
+		8'b00011001: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + dataaddr;//out
+		end
 		/*MEM*/
-		6'b011010: result = 32'b0 + datafrommem; //datafrommem
-		6'b011011: result = 32'b0 + datafromimm; //datafromimm
-		6'b011100: result = 32'b0 + writeAddr; //regaddrout
-		6'b011111: result = 32'b0 + wb; //wbo
+		8'b00011010: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + datafrommem; //datafrommem
+		end
+		8'b00011011: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + datafromimm; //datafromimm
+		end
+		8'b00011100: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + writeAddr; //regaddrout
+		end
+		// 8'b00011101:
+			// in WB 
+		//	8'b00011110:
+			// in WB
+		8'b00011111: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + wb; //wbo
+		end
 		/*WB*/
-		6'b011101: result = 32'b0 + writeData; //datatoregfile
-		6'b011110: result = 32'b0 + regWrite; //weregfile
-      6'b111000: result = 32'b0 + 8'b01010101;
-		6'b111111: result = 32'b0 + 8'b11111111;
-		default: result = 0;
+		8'b00011101: 
+		begin
+			size <= 2'b11;
+			result <= 32'b0 + writeData; //datatoregfile
+		end
+		8'b00011110: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + regWrite; //weregfile
+		end
+		//clocks
+      8'b00111000: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + 8'b01010101;
+		end
+		8'b00111111: 
+		begin
+			size <= 2'b00;
+			result <= 32'b0 + 8'b11111111;
+		end
+		//******************* registros  **************//
+		8'b01000000:
+		begin
+			addrAsync <= 5'b0;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01000001:
+		begin
+			addrAsync <= 5'd1;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01000010:
+		begin
+			addrAsync <= 5'd2;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01000011:
+		begin
+			addrAsync <= 5'd3;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01000100:
+		begin
+			addrAsync <= 5'd4;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01000101:
+		begin
+			addrAsync <= 5'd5;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01000110:
+		begin
+			addrAsync <= 5'd6;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01000111:
+		begin
+			addrAsync <= 5'd7;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01001000:
+		begin
+			addrAsync <= 5'd8;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01001001:
+		begin
+			addrAsync <= 5'd9;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01001010:
+		begin
+			addrAsync <= 5'd10;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01001011:
+		begin
+			addrAsync <= 5'd11;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01001100:
+		begin
+			addrAsync <= 5'd12;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01001101:
+		begin
+			addrAsync <= 5'd13;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01001110:
+		begin
+			addrAsync <= 5'd14;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01001111:
+		begin
+			addrAsync <= 5'd15;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01010000:
+		begin
+			addrAsync <= 5'd16;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01010001:
+		begin
+			addrAsync <= 5'd17;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01010010:
+		begin
+			addrAsync <= 5'd18;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01010011:
+		begin
+			addrAsync <= 5'd19;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01010100:
+		begin
+			addrAsync <= 5'd20;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01010101:
+		begin
+			addrAsync <= 5'd21;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01010110:
+		begin
+			addrAsync <= 5'd22;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01010111:
+		begin
+			addrAsync <= 5'd23;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01011000:
+		begin
+			addrAsync <= 5'd24;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01011001:
+		begin
+			addrAsync <= 5'd25;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01011010:
+		begin
+			addrAsync <= 5'd26;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01011011:
+		begin
+			addrAsync <= 5'd27;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01011100:
+		begin
+			addrAsync <= 5'd28;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01011101:
+		begin
+			addrAsync <= 5'd29;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01011110:
+		begin
+			addrAsync <= 5'd30;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		8'b01011111:
+		begin
+			addrAsync <= 5'd31;
+			size <= 2'b11;
+			result <= outputAsync;
+		end
+		default:
+		begin		
+			result <= 0;
+			size <= 2'b00;
+		end
+		
 	endcase
 	
-	size = code[7:6];
+	
 	
 end
 
