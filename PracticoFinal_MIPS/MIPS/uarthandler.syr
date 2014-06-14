@@ -4,13 +4,13 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.13 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Reading design: uarthandler.prj
 
@@ -222,7 +222,7 @@ Elaborating module <mem>.
 
 Elaborating module <rammemory>.
 WARNING:HDLCompiler:1499 - "D:\Estudio\facu\arquitectura de computadoras\final\trunk el bueno\PracticoFinal_MIPS\MIPS\ipcore_dir\rammemory.v" Line 39: Empty module <rammemory> remains a black box.
-WARNING:HDLCompiler:189 - "D:\Estudio\facu\arquitectura de computadoras\final\trunk el bueno\PracticoFinal_MIPS\MIPS\mem.v" Line 57: Size mismatch in connection of port <addra>. Formal port size is 13-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:189 - "D:\Estudio\facu\arquitectura de computadoras\final\trunk el bueno\PracticoFinal_MIPS\MIPS\mem.v" Line 83: Size mismatch in connection of port <addra>. Formal port size is 13-bit while actual signal size is 32-bit.
 
 Elaborating module <wb>.
 
@@ -327,9 +327,17 @@ Unit <uart_tx> synthesized.
 
 Synthesizing Unit <debuger_decoder>.
     Related source file is "D:\Estudio\facu\arquitectura de computadoras\final\trunk el bueno\PracticoFinal_MIPS\MIPS\debuger_decodificator.v".
-INFO:Xst:3210 - "D:\Estudio\facu\arquitectura de computadoras\final\trunk el bueno\PracticoFinal_MIPS\MIPS\debuger_decodificator.v" line 124: Output port <memRead> of the instance <ins_decoder> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Estudio\facu\arquitectura de computadoras\final\trunk el bueno\PracticoFinal_MIPS\MIPS\debuger_decodificator.v" line 128: Output port <memRead> of the instance <ins_decoder> is unconnected or connected to loadless signal.
+    Found 32x5-bit Read Only RAM for signal <_n0261>
+WARNING:Xst:737 - Found 1-bit latch for signal <addrAsync<3>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <addrAsync<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <addrAsync<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <addrAsync<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:737 - Found 1-bit latch for signal <addrAsync<4>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
     Summary:
-	no macro.
+	inferred   1 RAM(s).
+	inferred   5 Latch(s).
+	inferred  34 Multiplexer(s).
 Unit <debuger_decoder> synthesized.
 
 Synthesizing Unit <StallHandler>.
@@ -403,28 +411,30 @@ Synthesizing Unit <stage_id>.
     Found 1-bit register for signal <isEq>.
     Found 1-bit register for signal <memRead>.
     Found 1-bit register for signal <nop>.
+    Found 2-bit register for signal <memdatasize>.
     Found 4-bit register for signal <aluOp>.
     Summary:
-	inferred  93 D-type flip-flop(s).
+	inferred  95 D-type flip-flop(s).
 	inferred   1 Multiplexer(s).
 Unit <stage_id> synthesized.
 
 Synthesizing Unit <ControlModule>.
     Related source file is "D:\Estudio\facu\arquitectura de computadoras\final\trunk el bueno\PracticoFinal_MIPS\MIPS\ControlModule.v".
     Summary:
-	inferred   3 Multiplexer(s).
+	inferred   6 Multiplexer(s).
 Unit <ControlModule> synthesized.
 
 Synthesizing Unit <RegisterBank>.
     Related source file is "D:\Estudio\facu\arquitectura de computadoras\final\trunk el bueno\PracticoFinal_MIPS\MIPS\RegisterBank.v".
     Found 32-bit register for signal <registro2>.
-    Found 1024-bit register for signal <n0052[1023:0]>.
+    Found 1024-bit register for signal <n0055[1023:0]>.
     Found 32-bit register for signal <registro1>.
-    Found 32-bit 32-to-1 multiplexer for signal <addr1[4]_data[31][31]_wide_mux_3_OUT> created at line 51.
-    Found 32-bit 32-to-1 multiplexer for signal <addr2[4]_data[31][31]_wide_mux_4_OUT> created at line 52.
+    Found 32-bit 32-to-1 multiplexer for signal <outputAsync> created at line 40.
+    Found 32-bit 32-to-1 multiplexer for signal <addr1[4]_data[31][31]_wide_mux_4_OUT> created at line 56.
+    Found 32-bit 32-to-1 multiplexer for signal <addr2[4]_data[31][31]_wide_mux_5_OUT> created at line 57.
     Summary:
 	inferred 1088 D-type flip-flop(s).
-	inferred  34 Multiplexer(s).
+	inferred  35 Multiplexer(s).
 Unit <RegisterBank> synthesized.
 
 Synthesizing Unit <signExtension>.
@@ -450,15 +460,16 @@ Synthesizing Unit <stage_exe>.
     Found 1-bit register for signal <zero>.
     Found 2-bit register for signal <wbi_o>.
     Found 1-bit register for signal <M_o>.
+    Found 2-bit register for signal <memdatasize_o>.
     Found 32-bit register for signal <data_b_o>.
     Found 5-bit register for signal <regaddr_o>.
     Found 5-bit register for signal <rt_id>.
     Found 1-bit register for signal <nop>.
     Found 32-bit register for signal <out>.
-    Found 32-bit 4-to-1 multiplexer for signal <a_processed_entry> created at line 69.
-    Found 32-bit 4-to-1 multiplexer for signal <b_processed_entry> created at line 69.
+    Found 32-bit 4-to-1 multiplexer for signal <a_processed_entry> created at line 71.
+    Found 32-bit 4-to-1 multiplexer for signal <b_processed_entry> created at line 71.
     Summary:
-	inferred 114 D-type flip-flop(s).
+	inferred 116 D-type flip-flop(s).
 	inferred   4 Multiplexer(s).
 Unit <stage_exe> synthesized.
 
@@ -491,12 +502,15 @@ Unit <alu_control> synthesized.
 Synthesizing Unit <mem>.
     Related source file is "D:\Estudio\facu\arquitectura de computadoras\final\trunk el bueno\PracticoFinal_MIPS\MIPS\mem.v".
     Found 32-bit register for signal <datafromimm>.
+    Found 32-bit register for signal <datamask>.
     Found 5-bit register for signal <regaddrout>.
     Found 1-bit register for signal <nop>.
     Found 2-bit register for signal <wbo>.
+    Found 4x36-bit Read Only RAM for signal <_n0031>
     Summary:
-	inferred  40 D-type flip-flop(s).
-	inferred   2 Multiplexer(s).
+	inferred   1 RAM(s).
+	inferred  72 D-type flip-flop(s).
+	inferred   3 Multiplexer(s).
 Unit <mem> synthesized.
 
 Synthesizing Unit <wb>.
@@ -535,9 +549,11 @@ Unit <debugersm> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 3
+# RAMs                                                 : 5
  16x8-bit dual-port RAM                                : 2
+ 32x5-bit single-port Read Only RAM                    : 1
  4x1-bit single-port Read Only RAM                     : 1
+ 4x36-bit single-port Read Only RAM                    : 1
 # Adders/Subtractors                                   : 14
  3-bit adder                                           : 3
  3-bit subtractor                                      : 1
@@ -545,28 +561,30 @@ Macro Statistics
  32-bit addsub                                         : 1
  4-bit adder                                           : 6
  9-bit adder                                           : 1
-# Registers                                            : 64
+# Registers                                            : 67
  1-bit register                                        : 25
  1024-bit register                                     : 1
- 2-bit register                                        : 6
+ 2-bit register                                        : 8
  3-bit register                                        : 3
- 32-bit register                                       : 11
+ 32-bit register                                       : 12
  4-bit register                                        : 7
  5-bit register                                        : 6
  8-bit register                                        : 4
  9-bit register                                        : 1
+# Latches                                              : 5
+ 1-bit latch                                           : 5
 # Comparators                                          : 11
  4-bit comparator not equal                            : 4
  5-bit comparator equal                                : 7
-# Multiplexers                                         : 112
- 1-bit 2-to-1 multiplexer                              : 10
- 2-bit 2-to-1 multiplexer                              : 20
+# Multiplexers                                         : 151
+ 1-bit 2-to-1 multiplexer                              : 11
+ 2-bit 2-to-1 multiplexer                              : 22
  2-bit 4-to-1 multiplexer                              : 3
  3-bit 2-to-1 multiplexer                              : 4
- 32-bit 2-to-1 multiplexer                             : 47
- 32-bit 32-to-1 multiplexer                            : 2
+ 32-bit 2-to-1 multiplexer                             : 81
+ 32-bit 32-to-1 multiplexer                            : 3
  32-bit 4-to-1 multiplexer                             : 2
- 4-bit 2-to-1 multiplexer                              : 17
+ 4-bit 2-to-1 multiplexer                              : 18
  4-bit 4-to-1 multiplexer                              : 2
  5-bit 2-to-1 multiplexer                              : 3
  8-bit 2-to-1 multiplexer                              : 1
@@ -590,6 +608,20 @@ Reading core <ipcore_dir/rammemory.ngc>.
 Loading core <pmem> for timing and area information for instance <pmemory>.
 Loading core <rammemory> for timing and area information for instance <memory>.
 
+Synthesizing (advanced) Unit <debuger_decoder>.
+INFO:Xst:3231 - The small RAM <Mram__n0261> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 5-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <code<4:0>>     |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <debuger_decoder> synthesized (advanced).
+
 Synthesizing (advanced) Unit <fifo>.
 The following registers are absorbed into counter <r_ptr_reg>: 1 register on signal <r_ptr_reg>.
 The following registers are absorbed into counter <w_ptr_reg>: 1 register on signal <w_ptr_reg>.
@@ -610,6 +642,20 @@ INFO:Xst:3231 - The small RAM <Mram_array_reg> will be implemented on LUTs in or
     |     doB            | connected to internal node          |          |
     -----------------------------------------------------------------------
 Unit <fifo> synthesized (advanced).
+
+Synthesizing (advanced) Unit <mem>.
+INFO:Xst:3231 - The small RAM <Mram__n0031> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 4-word x 36-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <memdatasize>   |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <mem> synthesized (advanced).
 
 Synthesizing (advanced) Unit <mod_m_counter>.
 The following registers are absorbed into counter <r_reg>: 1 register on signal <r_reg>.
@@ -642,9 +688,11 @@ Unit <uart_tx> synthesized (advanced).
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 3
+# RAMs                                                 : 5
  16x8-bit dual-port distributed RAM                    : 2
+ 32x5-bit single-port distributed Read Only RAM        : 1
  4x1-bit single-port distributed Read Only RAM         : 1
+ 4x36-bit single-port distributed Read Only RAM        : 1
 # Adders/Subtractors                                   : 10
  3-bit adder                                           : 1
  3-bit subtractor                                      : 1
@@ -656,20 +704,20 @@ Macro Statistics
  32-bit up counter                                     : 1
  4-bit up counter                                      : 4
  9-bit up counter                                      : 1
-# Registers                                            : 1458
- Flip-Flops                                            : 1458
+# Registers                                            : 1494
+ Flip-Flops                                            : 1494
 # Comparators                                          : 11
  4-bit comparator not equal                            : 4
  5-bit comparator equal                                : 7
-# Multiplexers                                         : 106
- 1-bit 2-to-1 multiplexer                              : 7
- 2-bit 2-to-1 multiplexer                              : 20
+# Multiplexers                                         : 146
+ 1-bit 2-to-1 multiplexer                              : 9
+ 2-bit 2-to-1 multiplexer                              : 22
  2-bit 4-to-1 multiplexer                              : 3
  3-bit 2-to-1 multiplexer                              : 2
- 32-bit 2-to-1 multiplexer                             : 46
- 32-bit 32-to-1 multiplexer                            : 2
+ 32-bit 2-to-1 multiplexer                             : 80
+ 32-bit 32-to-1 multiplexer                            : 3
  32-bit 4-to-1 multiplexer                             : 2
- 4-bit 2-to-1 multiplexer                              : 17
+ 4-bit 2-to-1 multiplexer                              : 18
  4-bit 4-to-1 multiplexer                              : 2
  5-bit 2-to-1 multiplexer                              : 3
  8-bit 2-to-1 multiplexer                              : 1
@@ -691,6 +739,17 @@ INFO:Xst:2261 - The FF/Latch <extendedInstr_14> in Unit <stage_id> is equivalent
 INFO:Xst:2261 - The FF/Latch <extendedInstr_11> in Unit <stage_id> is equivalent to the following FF/Latch, which will be removed : <regAddr1_0> 
 INFO:Xst:2261 - The FF/Latch <extendedInstr_15> in Unit <stage_id> is equivalent to the following 17 FFs/Latches, which will be removed : <extendedInstr_16> <extendedInstr_17> <extendedInstr_18> <extendedInstr_19> <extendedInstr_20> <extendedInstr_21> <extendedInstr_22> <extendedInstr_23> <extendedInstr_24> <extendedInstr_25> <extendedInstr_26> <extendedInstr_27> <extendedInstr_28> <extendedInstr_29> <extendedInstr_30> <extendedInstr_31> <regAddr1_4> 
 INFO:Xst:2261 - The FF/Latch <extendedInstr_13> in Unit <stage_id> is equivalent to the following FF/Latch, which will be removed : <regAddr1_2> 
+WARNING:Xst:1710 - FF/Latch <datamask_0> (without init value) has a constant value of 1 in block <mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <datamask_1> (without init value) has a constant value of 1 in block <mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <datamask_2> (without init value) has a constant value of 1 in block <mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <datamask_3> (without init value) has a constant value of 1 in block <mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <datamask_4> (without init value) has a constant value of 1 in block <mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <datamask_5> (without init value) has a constant value of 1 in block <mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <datamask_6> (without init value) has a constant value of 1 in block <mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <datamask_7> (without init value) has a constant value of 1 in block <mem>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <datamask_24> in Unit <mem> is equivalent to the following 7 FFs/Latches, which will be removed : <datamask_25> <datamask_26> <datamask_27> <datamask_28> <datamask_29> <datamask_30> <datamask_31> 
+INFO:Xst:2261 - The FF/Latch <datamask_8> in Unit <mem> is equivalent to the following 7 FFs/Latches, which will be removed : <datamask_9> <datamask_10> <datamask_11> <datamask_12> <datamask_13> <datamask_14> <datamask_15> 
+INFO:Xst:2261 - The FF/Latch <datamask_16> in Unit <mem> is equivalent to the following 7 FFs/Latches, which will be removed : <datamask_17> <datamask_18> <datamask_19> <datamask_20> <datamask_21> <datamask_22> <datamask_23> 
 
 Optimizing unit <uarthandler> ...
 
@@ -723,17 +782,15 @@ WARNING:Xst:2677 - Node <decoder/ins_decoder/memRead> of sequential type is unco
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block uarthandler, actual ratio is 39.
-FlipFlop decoder/exe/regaddr_o_2 has been replicated 1 time(s)
+Found area constraint ratio of 100 (+ 5) on block uarthandler, actual ratio is 45.
+FlipFlop decoder/exe/regaddr_o_2 has been replicated 2 time(s)
 FlipFlop decoder/ins_decoder/extendedInstr_15 has been replicated 1 time(s)
-FlipFlop decoder/ins_decoder/regDst has been replicated 1 time(s)
+FlipFlop decoder/ins_decoder/regDst has been replicated 2 time(s)
 FlipFlop decoder/ins_decoder/rs_2 has been replicated 1 time(s)
 FlipFlop decoder/stage_mem/regaddrout_0 has been replicated 1 time(s)
 FlipFlop decoder/stage_mem/regaddrout_1 has been replicated 1 time(s)
 FlipFlop decoder/stage_mem/regaddrout_2 has been replicated 1 time(s)
-FlipFlop decoder/stage_mem/regaddrout_3 has been replicated 1 time(s)
-FlipFlop decoder/stage_mem/regaddrout_4 has been replicated 1 time(s)
-FlipFlop decoder/stage_mem/wbo_0 has been replicated 2 time(s)
+FlipFlop decoder/stage_mem/wbo_0 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -741,8 +798,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 1510
- Flip-Flops                                            : 1510
+# Registers                                            : 1516
+ Flip-Flops                                            : 1516
 
 =========================================================================
 
@@ -765,33 +822,33 @@ Top Level Output File Name         : uarthandler.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 3487
+# BELS                             : 3862
 #      GND                         : 5
-#      INV                         : 8
+#      INV                         : 10
 #      LUT1                        : 8
-#      LUT2                        : 96
-#      LUT3                        : 127
-#      LUT4                        : 76
-#      LUT5                        : 1332
-#      LUT6                        : 1484
+#      LUT2                        : 80
+#      LUT3                        : 138
+#      LUT4                        : 99
+#      LUT5                        : 589
+#      LUT6                        : 2523
 #      MUXCY                       : 101
-#      MUXF7                       : 141
-#      VCC                         : 4
+#      MUXF7                       : 201
+#      VCC                         : 3
 #      XORCY                       : 105
-# FlipFlops/Latches                : 1512
-#      FD                          : 101
-#      FDE                         : 159
-#      FDR                         : 123
+# FlipFlops/Latches                : 1523
+#      FD                          : 95
+#      FDE                         : 165
+#      FDR                         : 126
 #      FDR_1                       : 2
-#      FDRE                        : 100
+#      FDRE                        : 103
 #      FDRE_1                      : 1024
 #      FDS                         : 1
 #      FDSE                        : 2
-# RAMS                             : 25
+#      LD                          : 5
+# RAMS                             : 26
 #      RAM16X1D                    : 4
 #      RAM32M                      : 2
-#      RAMB16BWER                  : 18
-#      RAMB8BWER                   : 1
+#      RAMB16BWER                  : 20
 # Clock Buffers                    : 3
 #      BUFG                        : 2
 #      BUFGP                       : 1
@@ -806,26 +863,26 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            1512  out of  18224     8%  
- Number of Slice LUTs:                 3147  out of   9112    34%  
-    Number used as Logic:              3131  out of   9112    34%  
+ Number of Slice Registers:            1523  out of  18224     8%  
+ Number of Slice LUTs:                 3463  out of   9112    38%  
+    Number used as Logic:              3447  out of   9112    37%  
     Number used as Memory:               16  out of   2176     0%  
        Number used as RAM:               16
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   3304
-   Number with an unused Flip Flop:    1792  out of   3304    54%  
-   Number with an unused LUT:           157  out of   3304     4%  
-   Number of fully used LUT-FF pairs:  1355  out of   3304    41%  
-   Number of unique control sets:        23
+ Number of LUT Flip Flop pairs used:   3610
+   Number with an unused Flip Flop:    2087  out of   3610    57%  
+   Number with an unused LUT:           147  out of   3610     4%  
+   Number of fully used LUT-FF pairs:  1376  out of   3610    38%  
+   Number of unique control sets:        30
 
 IO Utilization: 
  Number of IOs:                           4
  Number of bonded IOBs:                   4  out of    232     1%  
 
 Specific Feature Utilization:
- Number of Block RAM/FIFO:               19  out of     32    59%  
-    Number using Block RAM only:         19
+ Number of Block RAM/FIFO:               20  out of     32    62%  
+    Number using Block RAM only:         20
  Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
 
 ---------------------------
@@ -850,13 +907,14 @@ Clock Information:
 Clock Signal                                                               | Clock buffer(FF name)                                                                                                                                   | Load  |
 ---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
 clk                                                                        | BUFGP                                                                                                                                                   | 125   |
-decoder/_n0210(decoder/_n0210<5>2:O)                                       | BUFG(*)(decoder/staller/stall)                                                                                                                          | 1376  |
+decoder/Mmux_result1103(decoder/Mmux_result11031:O)                        | NONE(*)(decoder/addrAsync_0)                                                                                                                            | 5     |
+decoder/clk(decoder/clk<7>1:O)                                             | BUFG(*)(decoder/staller/stall)                                                                                                                          | 1383  |
 decoder/instr_fetch/clock_inv(decoder/instr_fetch/clock_inv1:O)            | BUFG(*)(decoder/instr_fetch/pc_reg/pc_31)                                                                                                               | 32    |
 decoder/instr_fetch/processed_clock(decoder/instr_fetch/processed_clock1:O)| NONE(*)(decoder/instr_fetch/pmemory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)| 4     |
 decoder/instr_fetch/pmemory/N1                                             | NONE(decoder/instr_fetch/pmemory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)   | 4     |
-decoder/stage_mem/memory/N1                                                | NONE(decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)      | 15    |
+decoder/stage_mem/memory/N1                                                | NONE(decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)      | 16    |
 ---------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
-(*) These 3 clock signal(s) are generated by combinatorial logic,
+(*) These 4 clock signal(s) are generated by combinatorial logic,
 and XST is not able to identify which are the primary clock signals.
 Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -869,8 +927,8 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 11.970ns (Maximum Frequency: 83.544MHz)
-   Minimum input arrival time before clock: 6.000ns
+   Minimum period: 12.540ns (Maximum Frequency: 79.742MHz)
+   Minimum input arrival time before clock: 6.008ns
    Maximum output required time after clock: 3.597ns
    Maximum combinational path delay: No path found
 
@@ -880,61 +938,66 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 7.753ns (frequency: 128.987MHz)
-  Total number of paths / destination ports: 3438 / 278
+  Clock period: 9.967ns (frequency: 100.331MHz)
+  Total number of paths / destination ports: 8247 / 284
 -------------------------------------------------------------------------
-Delay:               7.753ns (Levels of Logic = 5)
-  Source:            state_machine/r_data_out_0 (FF)
-  Destination:       state_machine/datatosend_0_0 (FF)
+Delay:               9.967ns (Levels of Logic = 9)
+  Source:            state_machine/r_data_out_6 (FF)
+  Destination:       state_machine/datatosend_0_1 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: state_machine/r_data_out_0 to state_machine/datatosend_0_0
+  Data Path: state_machine/r_data_out_6 to state_machine/datatosend_0_1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             98   0.447   2.112  state_machine/r_data_out_0 (state_machine/r_data_out_0)
-     LUT6:I2->O           29   0.203   1.614  decoder/_n0079<5>1 (decoder/_n0079)
-     LUT6:I0->O            1   0.203   0.808  decoder/_n0443<0>2 (decoder/_n0443<0>1)
-     LUT6:I3->O            1   0.205   0.827  decoder/_n0443<0>5 (decoder/_n0443<0>7)
-     LUT6:I2->O            1   0.203   0.827  decoder/_n0443<0>10 (decoder/_n0443<0>14)
-     LUT6:I2->O            1   0.203   0.000  decoder/_n0443<0>25 (result<0>)
-     FDE:D                     0.102          state_machine/datatosend_0_0
+     FDE:C->Q             56   0.447   1.816  state_machine/r_data_out_6 (state_machine/r_data_out_6)
+     LUT5:I2->O            6   0.205   0.745  decoder/_n0413<6>11 (decoder/_n0413<6>1)
+     LUT3:I2->O           32   0.205   1.396  decoder/_n0413<6>2 (decoder/_n0413)
+     LUT5:I3->O            1   0.203   0.580  decoder/Mmux_result544 (decoder/Mmux_result543)
+     LUT6:I5->O            1   0.205   0.580  decoder/Mmux_result545 (decoder/Mmux_result544)
+     LUT6:I5->O            1   0.205   0.580  decoder/Mmux_result546_SW0 (N926)
+     LUT5:I4->O            2   0.205   0.617  decoder/Mmux_result546 (decoder/Mmux_result49)
+     LUT6:I5->O            1   0.205   0.684  decoder/Mmux_result591 (decoder/Mmux_result59)
+     LUT6:I4->O            1   0.203   0.580  decoder/Mmux_result5913 (decoder/Mmux_result5912)
+     LUT5:I4->O            1   0.205   0.000  decoder/Mmux_result5914 (result<1>)
+     FDE:D                     0.102          state_machine/datatosend_0_1
     ----------------------------------------
-    Total                      7.753ns (1.566ns logic, 6.187ns route)
-                                       (20.2% logic, 79.8% route)
+    Total                      9.967ns (2.390ns logic, 7.577ns route)
+                                       (24.0% logic, 76.0% route)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'decoder/_n0210'
-  Clock period: 11.970ns (frequency: 83.544MHz)
-  Total number of paths / destination ports: 1145471 / 2992
+Timing constraint: Default period analysis for Clock 'decoder/clk'
+  Clock period: 12.540ns (frequency: 79.742MHz)
+  Total number of paths / destination ports: 1040375 / 3034
 -------------------------------------------------------------------------
-Delay:               11.970ns (Levels of Logic = 10)
-  Source:            decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram (RAM)
+Delay:               12.540ns (Levels of Logic = 12)
+  Source:            decoder/stage_mem/regaddrout_4 (FF)
   Destination:       decoder/exe/zero (FF)
-  Source Clock:      decoder/_n0210 rising
-  Destination Clock: decoder/_n0210 rising
+  Source Clock:      decoder/clk rising
+  Destination Clock: decoder/clk rising
 
-  Data Path: decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram to decoder/exe/zero
+  Data Path: decoder/stage_mem/regaddrout_4 to decoder/exe/zero
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     RAMB16BWER:CLKA->DOA6    1   1.850   0.827  ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram (ramloop[8].ram.ram_douta<6>)
-     LUT6:I2->O           40   0.203   1.406  has_mux_a.A/Mmux_dout_mux131 (DOUTA<20>)
-     end scope: 'decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr:DOUTA<20>'
-     end scope: 'decoder/stage_mem/memory:douta<20>'
-     LUT6:I5->O            4   0.205   1.048  decoder/exe/Mmux_a_processed_entry131 (decoder/exe/a_processed_entry<20>)
-     LUT6:I0->O           18   0.203   1.297  decoder/exe/arith_log_unit/out3 (decoder/exe/arith_log_unit/out2)
-     LUT6:I2->O            9   0.203   0.829  decoder/exe/arith_log_unit/Mmux_out10333 (decoder/exe/arith_log_unit/Mmux_out10242)
-     MUXF7:S->O            1   0.148   0.827  decoder/exe/arith_log_unit/Mmux_out10245_SW1 (N492)
-     LUT6:I2->O            2   0.203   0.845  decoder/exe/arith_log_unit/Mmux_out10248 (decoder/exe/t_out<16>)
-     LUT6:I3->O            1   0.205   0.580  decoder/exe/arith_log_unit/zero6_SW0_SW0 (N921)
-     LUT6:I5->O            1   0.205   0.580  decoder/exe/arith_log_unit/zero5_SW0 (N306)
+     FD:C->Q              43   0.447   1.813  decoder/stage_mem/regaddrout_4 (decoder/stage_mem/regaddrout_4)
+     LUT6:I0->O            1   0.203   0.000  decoder/fe/Mmux_selector_salida_b22_2_G (N1085)
+     MUXF7:I1->O          18   0.140   1.050  decoder/fe/Mmux_selector_salida_b22_2 (decoder/fe/Mmux_selector_salida_b221)
+     LUT6:I5->O            2   0.205   0.981  decoder/exe/Mmux_b_processed_entry101_SW0 (N299)
+     LUT6:I0->O            1   0.203   0.684  decoder/exe/Mmux_b_entry101_F (N998)
+     LUT3:I1->O           19   0.203   1.072  decoder/exe/Mmux_b_entry1011 (decoder/exe/b_entry<18>)
+     LUT6:I5->O            1   0.205   0.580  decoder/exe/arith_log_unit/Sh13111 (decoder/exe/arith_log_unit/Sh13111)
+     LUT5:I4->O            2   0.205   0.721  decoder/exe/arith_log_unit/Sh13113 (decoder/exe/arith_log_unit/Sh1311)
+     LUT6:I4->O            1   0.203   0.684  decoder/exe/arith_log_unit/Mmux_out10783 (decoder/exe/arith_log_unit/Mmux_out10782)
+     LUT6:I4->O            2   0.203   0.864  decoder/exe/arith_log_unit/Mmux_out10786 (decoder/exe/t_out<3>)
+     LUT6:I2->O            1   0.203   0.580  decoder/exe/arith_log_unit/zero1_SW0_SW0 (N788)
+     LUT6:I5->O            1   0.205   0.580  decoder/exe/arith_log_unit/zero2 (decoder/exe/arith_log_unit/zero1)
      LUT6:I5->O            1   0.205   0.000  decoder/exe/arith_log_unit/zero7 (decoder/exe/t_zero)
      FDR:D                     0.102          decoder/exe/zero
     ----------------------------------------
-    Total                     11.970ns (3.732ns logic, 8.238ns route)
-                                       (31.2% logic, 68.8% route)
+    Total                     12.540ns (2.932ns logic, 9.608ns route)
+                                       (23.4% logic, 76.6% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'decoder/instr_fetch/clock_inv'
@@ -1012,23 +1075,23 @@ Offset:              3.401ns (Levels of Logic = 3)
                                        (50.9% logic, 49.1% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'decoder/_n0210'
-  Total number of paths / destination ports: 1235 / 1235
+Timing constraint: Default OFFSET IN BEFORE for Clock 'decoder/clk'
+  Total number of paths / destination ports: 1242 / 1242
 -------------------------------------------------------------------------
-Offset:              6.000ns (Levels of Logic = 2)
+Offset:              6.008ns (Levels of Logic = 2)
   Source:            reset (PAD)
   Destination:       decoder/exe/out_31 (FF)
-  Destination Clock: decoder/_n0210 rising
+  Destination Clock: decoder/clk rising
 
   Data Path: reset to decoder/exe/out_31
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O          1081   1.222   2.227  reset_IBUF (reset_IBUF)
-     LUT3:I2->O          115   0.205   1.916  decoder/exe/reset_stall_OR_236_o1 (decoder/exe/reset_stall_OR_236_o)
-     FDR:R                     0.430          decoder/exe/rt_id_0
+     IBUF:I->O          1082   1.222   2.227  reset_IBUF (reset_IBUF)
+     LUT3:I2->O          118   0.205   1.924  decoder/exe/reset_stall_OR_236_o1 (decoder/exe/reset_stall_OR_236_o)
+     FDR:R                     0.430          decoder/exe/wbi_o_0
     ----------------------------------------
-    Total                      6.000ns (1.857ns logic, 4.143ns route)
+    Total                      6.008ns (1.857ns logic, 4.151ns route)
                                        (30.9% logic, 69.1% route)
 
 =========================================================================
@@ -1044,7 +1107,7 @@ Offset:              3.878ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O          1081   1.222   2.226  reset_IBUF (reset_IBUF)
+     IBUF:I->O          1082   1.222   2.226  reset_IBUF (reset_IBUF)
      FDRE:R                    0.430          decoder/instr_fetch/pc_reg/pc_0
     ----------------------------------------
     Total                      3.878ns (1.652ns logic, 2.226ns route)
@@ -1079,17 +1142,26 @@ Clock to Setup on destination clock clk
                                    | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                       |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 -----------------------------------+---------+---------+---------+---------+
-clk                                |    7.752|         |         |         |
-decoder/_n0210                     |    7.522|         |         |         |
-decoder/instr_fetch/processed_clock|    6.046|         |         |         |
+clk                                |    9.967|         |         |         |
+decoder/Mmux_result1103            |         |    7.349|         |         |
+decoder/clk                        |    8.234|    5.797|         |         |
+decoder/instr_fetch/processed_clock|    6.400|         |         |         |
 -----------------------------------+---------+---------+---------+---------+
 
-Clock to Setup on destination clock decoder/_n0210
+Clock to Setup on destination clock decoder/Mmux_result1103
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |         |         |    2.097|         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock decoder/clk
 -----------------------------------+---------+---------+---------+---------+
                                    | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                       |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 -----------------------------------+---------+---------+---------+---------+
-decoder/_n0210                     |   11.970|    3.941|    4.607|         |
+decoder/clk                        |   12.540|    3.949|    4.821|         |
 decoder/instr_fetch/clock_inv      |    1.293|         |         |         |
 decoder/instr_fetch/processed_clock|    5.756|         |         |         |
 -----------------------------------+---------+---------+---------+---------+
@@ -1099,7 +1171,7 @@ Clock to Setup on destination clock decoder/instr_fetch/clock_inv
                              | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                 |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 -----------------------------+---------+---------+---------+---------+
-decoder/_n0210               |    4.573|    2.980|         |         |
+decoder/clk                  |    4.573|    2.980|         |         |
 decoder/instr_fetch/clock_inv|    2.421|         |         |         |
 -----------------------------+---------+---------+---------+---------+
 
@@ -1114,14 +1186,14 @@ decoder/instr_fetch/clock_inv|    1.541|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 75.00 secs
-Total CPU time to Xst completion: 75.12 secs
+Total REAL time to Xst completion: 80.00 secs
+Total CPU time to Xst completion: 80.13 secs
  
 --> 
 
-Total memory usage is 305148 kilobytes
+Total memory usage is 311056 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    8 (   0 filtered)
-Number of infos    :   13 (   0 filtered)
+Number of warnings :   21 (   0 filtered)
+Number of infos    :   18 (   0 filtered)
 

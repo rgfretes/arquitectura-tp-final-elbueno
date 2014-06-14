@@ -23,6 +23,7 @@ module stage_id(
 	input clock,
 	input reset,
 	input stall,
+	input [4:0]		addrAsync,
 	input [31:0] 	instr,
 	input [31:0] 	writeData,
 	input [4:0] 	writeAddr,
@@ -47,8 +48,9 @@ module stage_id(
 	output reg [4:0] 	regAddr2,
 	output reg [4:0] 	rs,
 	output reg 			regDst,
+	output reg 			nop,
 	output reg [1:0]  memdatasize,
-	output reg 			nop
+	output 	[31:0]	outputAsync
     );
 
 wire [3:0] 	_aluOp;
@@ -87,13 +89,15 @@ RegisterBank registerBank (
     .clock(clock),
 	 .reset(reset),
 	 .stall(stall),
+	 .addrAsync(addrAsync),
     .addr1(instr[25:21]), 
     .addr2(instr[20:16]), 
     .writeAddr(writeAddr), // mux de esta etapa con instr[20:16] y instr[16:11] -> no es seguro, consultar tito
     .writeData(writeData), // input de etapa ex
     .regWrite(regWrite), // De control
     .reg1(reg1), 
-    .reg2(reg2)
+    .reg2(reg2),
+	 .outputAsync(outputAsync)
     );
 	 
 signExtension signExtension (

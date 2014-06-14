@@ -31,21 +31,26 @@ module testBankRegister;
 	reg [4:0] writeAddr;
 	reg [31:0] writeData;
 	reg regWrite;
+	reg [4:0] addrAsync;
 
 	// Outputs
 	wire [31:0] reg1;
 	wire [31:0] reg2;
+	wire [31:0] outputAsync;
+	
 
 	// Instantiate the Unit Under Test (UUT)
 	RegisterBank uut (
 		.clock(clock), 
 		.addr1(addr1), 
-		.addr2(addr2), 
+		.addr2(addr2),
+		.addrAsync(addrAsync),
 		.writeAddr(writeAddr), 
 		.writeData(writeData), 
 		.regWrite(regWrite), 
 		.reg1(reg1), 
-		.reg2(reg2)
+		.reg2(reg2),
+		.outputAsync(outputAsync)
 	);
 
 	initial begin
@@ -56,6 +61,7 @@ module testBankRegister;
 		writeAddr = 0;
 		writeData = 0;
 		regWrite = 0;
+		addrAsync =0;
 
 		// Wait 100 ns for global reset to finish
 		#100;
@@ -68,6 +74,7 @@ module testBankRegister;
 		regWrite = 1;
 		addr1 = 0;
 		addr2 = 1;
+		addrAsync = 0;
 		#100;
 		clock = ~clock;
 		#100;
@@ -78,6 +85,7 @@ module testBankRegister;
 		regWrite = 1;
 		addr1 = 0;
 		addr2 = 1;
+		
 		#100;
 		clock = ~clock;
 		#100;
@@ -89,6 +97,7 @@ module testBankRegister;
 		regWrite = 1;
 		addr1 = 2;
 		addr2 = 3;
+		
 		#100;
 		clock = ~clock;
 		#100;
@@ -100,6 +109,7 @@ module testBankRegister;
 		regWrite = 1;
 		addr1 = 2;
 		addr2 = 3;
+		
 		#100; 
 		clock = ~clock;
 		#100;
@@ -111,16 +121,20 @@ module testBankRegister;
 		regWrite = 0;
 		addr1 = 0;
 		addr2 = 1;
+		
 		#100; 
 		clock = ~clock;
+		addrAsync = 3;
 		#100;
 		//
 		clock = ~clock;
+				addrAsync = 4;
 		writeAddr = 3;
 		writeData = 9;
 		regWrite = 0;
 		addr1 = 2;
 		addr2 = 3;
+		
 		#100; 
 		clock = ~clock;
 		#100;
@@ -131,6 +145,7 @@ module testBankRegister;
 		regWrite = 1;
 		addr1 = 30;
 		addr2 = 0;
+		
 		#100;
 		clock = ~clock;
 		#100;
@@ -141,6 +156,7 @@ module testBankRegister;
 		regWrite = 0;
 		addr1 = 30;
 		addr2 = 0;
+		
 		#100;
 		clock = ~clock;
 		#100;

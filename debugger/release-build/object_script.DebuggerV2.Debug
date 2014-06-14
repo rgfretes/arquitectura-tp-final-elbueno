@@ -1,0 +1,12 @@
+INPUT(
+./debug\qextserialport.o
+./debug\qextserialenumerator.o
+./debug\qextserialport_win.o
+./debug\qextserialenumerator_win.o
+./debug\main.o
+./debug\mainwindow.o
+./debug\signalmanagement.o
+./debug\continueexethread.o
+./debug\moc_mainwindow.o
+./debug\moc_continueexethread.o
+);

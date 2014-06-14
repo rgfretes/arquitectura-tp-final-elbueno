@@ -11,23 +11,23 @@ Target Device  : xc6slx16
 Target Package : csg324
 Target Speed   : -3
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Tue Jun 10 21:27:03 2014
+Mapped Date    : Fri Jun 13 22:44:51 2014
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    3
 Slice Logic Utilization:
-  Number of Slice Registers:                 1,512 out of  18,224    8%
-    Number used as Flip Flops:               1,512
-    Number used as Latches:                      0
+  Number of Slice Registers:                 1,523 out of  18,224    8%
+    Number used as Flip Flops:               1,518
+    Number used as Latches:                      5
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                      3,083 out of   9,112   33%
-    Number used as logic:                    3,049 out of   9,112   33%
-      Number using O6 output only:           2,927
+  Number of Slice LUTs:                      3,378 out of   9,112   37%
+    Number used as logic:                    3,349 out of   9,112   36%
+      Number using O6 output only:           3,213
       Number using O5 output only:               7
-      Number using O5 and O6:                  115
+      Number using O5 and O6:                  129
       Number used as ROM:                        0
     Number used as Memory:                      16 out of   2,176    1%
       Number used as Dual Port RAM:             16
@@ -36,21 +36,21 @@ Slice Logic Utilization:
         Number using O5 and O6:                  8
       Number used as Single Port RAM:            0
       Number used as Shift Register:             0
-    Number used exclusively as route-thrus:     18
-      Number with same-slice register load:     16
+    Number used exclusively as route-thrus:     13
+      Number with same-slice register load:     11
       Number with same-slice carry load:         2
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                 1,075 out of   2,278   47%
+  Number of occupied Slices:                 1,184 out of   2,278   51%
   Nummber of MUXCYs used:                      108 out of   4,556    2%
-  Number of LUT Flip Flop pairs used:        3,129
-    Number with an unused Flip Flop:         1,649 out of   3,129   52%
-    Number with an unused LUT:                  46 out of   3,129    1%
-    Number of fully used LUT-FF pairs:       1,434 out of   3,129   45%
-    Number of unique control sets:              24
+  Number of LUT Flip Flop pairs used:        3,462
+    Number with an unused Flip Flop:         1,968 out of   3,462   56%
+    Number with an unused LUT:                  84 out of   3,462    2%
+    Number of fully used LUT-FF pairs:       1,410 out of   3,462   40%
+    Number of unique control sets:              31
     Number of slice register sites lost
-      to control set restrictions:              72 out of  18,224    1%
+      to control set restrictions:             117 out of  18,224    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -63,8 +63,8 @@ IO Utilization:
     Number of LOCed IOBs:                        4 out of       4  100%
 
 Specific Feature Utilization:
-  Number of RAMB16BWERs:                        18 out of      32   56%
-  Number of RAMB8BWERs:                          1 out of      64    1%
+  Number of RAMB16BWERs:                        20 out of      32   62%
+  Number of RAMB8BWERs:                          0 out of      64    0%
   Number of BUFIO2/BUFIO2_2CLKs:                 0 out of      32    0%
   Number of BUFIO2FB/BUFIO2FB_2CLKs:             0 out of      32    0%
   Number of BUFG/BUFGMUXs:                       3 out of      16   18%
@@ -87,10 +87,10 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                5.77
+Average Fanout of Non-Clock Nets:                6.05
 
-Peak Memory Usage:  434 MB
-Total REAL time to MAP completion:  1 mins 48 secs 
+Peak Memory Usage:  441 MB
+Total REAL time to MAP completion:  1 mins 55 secs 
 Total CPU time to MAP completion:   1 mins 44 secs 
 
 Table of Contents
@@ -117,16 +117,15 @@ Section 2 - Warnings
 WARNING:Security:42 - Your software subscription period has lapsed. Your current
 version of Xilinx tools will continue to function, but you no longer qualify for
 Xilinx software updates or new releases.
-WARNING:PhysDesignRules:367 - The signal
-   <uartt/buffarini/Mram_array_reg1_RAMD_D1_O> is incomplete. The signal does
-   not drive any load pins in the design.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net decoder/Mmux_result1103 is
+   sourced by a combinatorial pin. This is not good design practice. Use the CE
+   pin to control the loading of data into the flip-flop.
 WARNING:PhysDesignRules:367 - The signal
    <uartt/bufferout/Mram_array_reg1_RAMD_D1_O> is incomplete. The signal does
    not drive any load pins in the design.
-WARNING:PhysDesignRules:2410 - This design is using one or more 9K Block RAMs
-   (RAMB8BWER).  9K Block RAM initialization data, both user defined and
-   default, may be incorrect and should not be used.  For more information,
-   please reference Xilinx Answer Record 39999.
+WARNING:PhysDesignRules:367 - The signal
+   <uartt/buffarini/Mram_array_reg1_RAMD_D1_O> is incomplete. The signal does
+   not drive any load pins in the design.
 
 Section 3 - Informational
 -------------------------
@@ -152,7 +151,7 @@ INFO:Pack:1650 - Map created a placed design.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-   9 block(s) optimized away
+   8 block(s) optimized away
    1 signal(s) removed
 
 Section 5 - Removed Logic
@@ -182,9 +181,6 @@ VCC 		decoder/instr_fetch/pmemory/XST_VCC
 GND
 		decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_ge
 n/valid.cstr/XST_GND
-VCC
-		decoder/stage_mem/memory/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_ge
-n/valid.cstr/XST_VCC
 GND 		decoder/stage_mem/memory/XST_GND
 VCC 		decoder/stage_mem/memory/XST_VCC
 

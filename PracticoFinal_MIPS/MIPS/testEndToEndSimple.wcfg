@@ -209,12 +209,12 @@
       <obj_property name="ElementShortName">datatoregfile[31:0]</obj_property>
       <obj_property name="ObjectShortName">datatoregfile[31:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ff0000</obj_property>
+      <obj_property name="CustomSignalColor">#ff00ff</obj_property>
    </wvobject>
    <wvobject fp_name="/testdeco/uut/write_back/weregfile" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">weregfile</obj_property>
       <obj_property name="ObjectShortName">weregfile</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ff0000</obj_property>
+      <obj_property name="CustomSignalColor">#ff00ff</obj_property>
    </wvobject>
 </wave_config>
