@@ -1,0 +1,110 @@
+Release 14.1 - xst P.15xf (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to D:/facu/Arquitecturas de las computadoras/Practico/arquitectura-tp-final-elbueno/PracticoFinal_MIPS/MIPS/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.21 secs
+ 
+--> Parameter xsthdpdir set to D:/facu/Arquitecturas de las computadoras/Practico/arquitectura-tp-final-elbueno/PracticoFinal_MIPS/MIPS/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.21 secs
+ 
+--> Reading design: uarthandler.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\signExtension.v" into library work
+Parsing module <signExtension>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\RegisterBank.v" into library work
+Parsing module <RegisterBank>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\pc.v" into library work
+Parsing module <pc>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\mux.v" into library work
+Parsing module <mux>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\ipcore_dir\rammemory.v" into library work
+Parsing module <rammemory>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\ipcore_dir\pmem.v" into library work
+Parsing module <pmem>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\GetRegAddr.v" into library work
+Parsing module <GetRegAddr>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\ControlModule.v" into library work
+Parsing module <ControlModule>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\branch_control.v" into library work
+Parsing module <branch_control>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\alu_control.v" into library work
+Parsing module <alu_control>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\alu.v" into library work
+Parsing module <alu>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\adder_32b.v" into library work
+Parsing module <adder_32b>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\wb.v" into library work
+Parsing module <wb>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\uart_tx.v" into library work
+Parsing module <uart_tx>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\uart_rx.v" into library work
+Parsing module <uart_rx>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\StallHandler.v" into library work
+Parsing module <StallHandler>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\stage_if.v" into library work
+Parsing module <stage_if>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\stage_id.v" into library work
+Parsing module <stage_id>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\stage_exe.v" into library work
+Parsing module <stage_exe>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\mod_m_counter.v" into library work
+Parsing module <mod_m_counter>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\mem.v" into library work
+Parsing module <mem>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\forwarding_mem.v" into library work
+Parsing module <forwarding_mem>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\forwarding_exe.v" into library work
+Parsing module <forwarding_exe>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\fifo.v" into library work
+Parsing module <fifo>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\uart.v" into library work
+Parsing module <uart>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\debuger_decodificator.v" into library work
+Parsing module <debuger_decoder>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\debugersm.v" into library work
+Parsing module <debugersm>.
+Analyzing Verilog file "D:\facu\Arquitecturas de las computadoras\Practico\arquitectura-tp-final-elbueno\PracticoFinal_MIPS\MIPS\uarthandler.v" into library work
+Parsing module <uarthandler>.
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 6.11 secs
+ 
+--> 
+
+Total memory usage is 174696 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

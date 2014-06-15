@@ -42,6 +42,7 @@ wire [31:0] data_a, data_b, data_imm, npc;
 wire [3:0] control_oper;
 wire control_use_b, control_Reg_DST, control_is_jump, control_branch_eq, control_branch_inc;
 wire [4:0] regaddr1, regaddr2;
+wire [25:0] jumpimmediate;
 
 wire [1:0] wb_exe;
 wire M_exe;
@@ -154,6 +155,7 @@ stage_id ins_decoder (
     .regAddr2(regaddr2),
 	 .rs(rs),
     .regDst(control_Reg_DST),
+	 .jumpimmediate(jumpimmediate),
 	 .nop(nop_id),
 	 .outputAsync(outputAsync)
     );
@@ -196,6 +198,7 @@ stage_exe exe(
 	 .result_from_exe(dataaddr),
 	 .result_from_mem(writeData),
 	 .isJumped(isJumped),
+	 .jumpimmediate(jumpimmediate),
 	 .nop(nop_exe)
     );
 
