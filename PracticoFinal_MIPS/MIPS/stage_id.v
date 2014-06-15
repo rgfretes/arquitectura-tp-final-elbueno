@@ -50,6 +50,7 @@ module stage_id(
 	output reg 			regDst,
 	output reg 			nop,
 	output reg [1:0]  memdatasize,
+	output reg [25:0] jumpimmediate,
 	output 	[31:0]	outputAsync
     );
 
@@ -141,6 +142,7 @@ begin
 			memRead 				= 1'b0;
 			nop 					= 1;
 			memdatasize			= 2'b0;
+			jumpimmediate		=26'b0;
 	  end
 	else if(stall)
 		begin
@@ -160,6 +162,7 @@ begin
 			pc_ex 				= pc_ex;
 			nop 					= nop;
 			memdatasize			= memdatasize;
+			jumpimmediate		= jumpimmediate;
 		end
 	else
 		begin
@@ -179,6 +182,7 @@ begin
 			pc_ex 				= pc_id;
 			nop 					= nop_if;
 			memdatasize			= _memdatasize;
+			jumpimmediate		= instr[25:0];
 		end
 
 end	

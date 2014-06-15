@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.1
-# Date: Sat Jun 14 01:35:56 2014
+# Date: Sun Jun 15 01:44:24 2014
 #
 ##############################################################
 #
@@ -46,7 +46,7 @@ CSET axi_id_width=4
 CSET axi_slave_type=Memory_Slave
 CSET axi_type=AXI4_Full
 CSET byte_size=9
-CSET coe_file="D:\Estudio\facu\arquitectura de computadoras\final\workspace - branches\tests\7)store-load-word-byte-halfword.p.coe"
+CSET coe_file="D:\facu\Arquitecturas de las computadoras\Practico\branches\tests\13)jumps.coe"
 CSET collision_warnings=ALL
 CSET component_name=pmem
 CSET disable_collision_warnings=false
@@ -103,4 +103,4 @@ CSET write_width_b=32
 MISC pkg_timestamp=2012-03-28T15:19:06Z
 # END Extra information
 GENERATE
-# CRC: 709c6db0
+# CRC: 79c903ce

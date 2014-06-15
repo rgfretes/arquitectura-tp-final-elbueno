@@ -37,6 +37,7 @@ module stage_exe(
 	 input [31:0] result_from_mem,
 	 // Signal for Control hazzard
 	 input 	isJumped,
+	 input [25:0] jumpimmediate,
 	 //Signals for stage_if
     input control_is_jump,
 	 input control_branch_eq,
@@ -89,7 +90,6 @@ module stage_exe(
 			b_processed_entry = data_b;
 	end
 	
-	//assign t_jump_address = npc + data_imm;
 	
 	adder_32b instance_name (
     .a(npc), 
@@ -110,7 +110,7 @@ module stage_exe(
 		 .oper(control_oper), 
 		 .alu_op(alu_op)
 		 );
-		
+	wire [31:0] jumpaddr = (32'b0 + jumpimmediate);
 	always @ (posedge clock)
 	begin
 		if (reset || isJumped || stall)
@@ -133,7 +133,10 @@ module stage_exe(
 		begin
 			out = t_out;
 			zero = t_zero;
-			jump_address = t_jump_address;
+			if(control_branch_inc)
+				jump_address = (npc & 32'hf0000000) | jumpaddr;
+			else
+				jump_address = t_jump_address;
 			is_jump_o = control_is_jump;
 			branch_eq_o = control_branch_eq;
 			branch_inc_o = control_branch_inc;
