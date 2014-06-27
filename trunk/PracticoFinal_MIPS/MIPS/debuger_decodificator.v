@@ -58,7 +58,8 @@ wire [4:0] regaddr_mem;
 wire [4:0] rt_id;
 
 /*WB*/
-wire [31:0] datafrommem, datafromimm, datamask;
+wire [31:0] datafrommem, datafromimm;
+wire [23:0] datamask;
 wire [1:0] wb;
 
 /*Forwarding*/
@@ -146,7 +147,6 @@ stage_id ins_decoder (
     .memWrite(M_exe),
 	 .memdatasize(memdatasize_exe),
     .wbi(wb_exe), 
-    .memRead(), 
     .aluSrc(control_use_b), 
     .reg1(data_a), 
     .reg2(data_b), 
@@ -236,6 +236,7 @@ wb write_back (
 
 always @ (*)
 begin
+	addrAsync <= 5'd0;
 	case (code[7:0])
 		8'b00111000: clk = 0;
 		8'b00111111: clk = 1;

@@ -34,13 +34,13 @@ module mem(
 	 output  [31:0] datafrommem,
     output reg [31:0] datafromimm,
 	 output reg [4:0] regaddrout,
-	 output reg [31:0] datamask,
+	 output reg [23:0] datamask,
 	 output reg nop
     );
 	 
 	 wire [31:0] douta;
 	 reg [3:0] dataselect;
-	 reg [31:0] outmask;
+	 reg [23:0] outmask;
 	 
 	 reg [31:0] processed_entry;
 	 wire processed_M = (nop_exe)? 1'b0 : M;
@@ -57,22 +57,22 @@ module mem(
 				2'b00:
 					begin 
 						dataselect = 4'b0001;
-						outmask = 32'b11111111;
+						outmask = 24'b0;
 					end
 				2'b01:
 					begin 
 						dataselect = 4'b0011;
-						outmask = 32'b1111111111111111;
+						outmask = 24'b11111111;
 					end
 				2'b10:
 					begin 
 						dataselect = 4'b0111;
-						outmask = 32'b111111111111111111111111;
+						outmask = 24'b1111111111111111;
 					end
 				2'b11:
 					begin 
 						dataselect = 4'b1111;
-						outmask = 32'b11111111111111111111111111111111;
+						outmask = 24'b111111111111111111111111;
 					end		
 		endcase
 	end
@@ -80,7 +80,7 @@ module mem(
 	rammemory memory (
   .clka(clk), // input clka
   .wea(writeenable), // input [3 : 0] wea
-  .addra(dataaddr), // input [12 : 0] addra
+  .addra(dataaddr[12:0]), // input [12 : 0] addra
   .dina(processed_entry), // input [31 : 0] dina
   .douta(datafrommem), // output [31 : 0] douta
   .rsta(reset)
@@ -92,7 +92,7 @@ module mem(
 			begin
 				wbo = 2'b0;
 				datafromimm = 32'b0;
-				datamask = 32'b0;
+				datamask = 24'b0;
 				regaddrout = 5'b0;
 				nop = 1;
 			end
