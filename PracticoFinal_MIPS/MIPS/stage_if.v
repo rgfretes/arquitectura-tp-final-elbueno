@@ -61,7 +61,7 @@ module stage_if(
 	 
 	pmem pmemory (
 	  .clka(processed_clock),
-	  .addra(iadd_out),
+	  .addra(iadd_out[10:0]),
 	  .douta(instruction)
 	);
 	

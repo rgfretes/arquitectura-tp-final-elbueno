@@ -19,7 +19,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module GetRegAddr(
-    input [31:0] instr,
+    input [14:0] instr,
     output reg [4:0] regAddr1,
     output reg [4:0] regAddr2,
 	 output reg [4:0] rs
@@ -28,9 +28,9 @@ module GetRegAddr(
 
 always@(*)
 begin
-	regAddr1 			= instr[15:11]; // rd
-	regAddr2 			= instr[20:16]; // rt
-	rs						= instr[25:21];
+	regAddr1 			= instr[4:0]; // rd
+	regAddr2 			= instr[9:5]; // rt
+	rs						= instr[14:10];
 end
 
 endmodule

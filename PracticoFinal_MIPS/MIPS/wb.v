@@ -23,14 +23,17 @@ module wb(
     input [31:0] datafromimm,
     input [1:0] wb,
 	 input nop_mem,
-	 input [31:0] datamask,
+	 input [23:0] datamask,
     output [31:0] datatoregfile,
     output weregfile
     );
 	
 	
 	 assign weregfile = (nop_mem) ?  1'b0 : wb[1];
-	 wire [31:0] filtereddatafrommem = datafrommem & datamask;
+	 wire [31:0] realdatamask;
+	 assign realdatamask[31:8] = datamask;
+	 assign realdatamask[7:0] = 8'b11111111;
+	 wire [31:0] filtereddatafrommem = datafrommem & realdatamask;
 	 mux multix (
     .mem(filtereddatafrommem), 
     .imm(datafromimm), 

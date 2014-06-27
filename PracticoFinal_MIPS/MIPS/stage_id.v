@@ -39,7 +39,6 @@ module stage_id(
 	output reg			isEq,
 	output reg			memWrite,  
 	output reg [1:0] 	wbi,
-	output reg			memRead, 
 	output reg			aluSrc, 
 	output [31:0]	reg1,
 	output [31:0]	reg2,
@@ -60,7 +59,6 @@ wire 			_isNotConditional;
 wire 			_isEq;
 wire 			_memWrite;
 wire [1:0] 	_wbi;
-wire 			_memRead;
 wire 			_aluSrc;
 //wire [31:0] _reg1;
 //wire [31:0] _reg2;
@@ -80,7 +78,6 @@ ControlModule control (
     .isEq(_isEq), 
     .memWrite(_memWrite), 
     .wbi(_wbi), 
-    .memRead(_memRead), 
     .aluSrc(_aluSrc), 
     .regDst(_regDst),
 	 .datasize(_memdatasize)
@@ -114,7 +111,7 @@ signExtension signExtension (
 //    );
 
 GetRegAddr getRegAddr (
-    .instr(instr), 
+    .instr(instr[25:11]), 
     .regAddr1(_regAddr1), 
     .regAddr2(_regAddr2),
 	 .rs(_rs)
@@ -139,7 +136,6 @@ begin
 			isJump 				= 1'b0;
 			isNotConditional 	= 1'b0;
 			isEq 					= 1'b0;
-			memRead 				= 1'b0;
 			nop 					= 1;
 			memdatasize			= 2'b0;
 			jumpimmediate		=26'b0;
@@ -152,7 +148,6 @@ begin
 			isEq 					= isEq;
 			memWrite 			= memWrite;
 			wbi 					= wbi;
-			memRead 				= memRead;
 			aluSrc 				= aluSrc;
 			extendedInstr 		= extendedInstr;
 			regDst				= regDst;
@@ -172,7 +167,6 @@ begin
 			isEq 					= _isEq;
 			memWrite 			= _memWrite;
 			wbi 					= _wbi;
-			memRead 				= _memRead;
 			aluSrc 				= _aluSrc;
 			extendedInstr 		= _extendedInstr;
 			regDst				= _regDst;
